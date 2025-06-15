@@ -1,5 +1,7 @@
 # Ananda Adventure Treks Website
 
+![Ananda Adventure Trek](./src/assets/logo/ananda-half.png)
+
 Welcome to the **Ananda Adventure Treks** official website! This repo contains the source code for our trekking and adventure tours site: [anandaadventure.com](https://anandaadventure.com).
 
 ---
