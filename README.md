@@ -42,18 +42,14 @@ Ananda Adventure Treks is a premier trekking and adventure company offering cura
 
 This project uses the following technologies:
 
-- **Frontend:** HTML5, CSS3, JavaScript (or React/Next.js)
-- **Styling:** Tailwind CSS / SASS / Bootstrap
-- **Build Tools:** Vite / Webpack / Next.js (if applicable)
-- **Deployment:** Vercel / Netlify / GitHub Pages
+- **Frontend:** HTML5, CSS3, TypeScript ( React.js | Sanity.io)
+- **Styling:** Tailwind CSS / Material UI
+- **Build Tools:** Vite
+- **Deployment:** Github / Cpanel
 
 ---
 
-## Getting Started
-
-### Prerequisites
-
-Make sure you have the following installed:
+### Build on
 
 - React (^19.1.0)
 - Node.js (v20.9.0)
