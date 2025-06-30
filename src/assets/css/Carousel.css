@@ -1,7 +1,7 @@
 .carousel-container {
   position: relative;
   width: 100%;
-  height: 700px; /* adjust as needed */
+  height: 700px;
   overflow: hidden;
 }
 
@@ -20,11 +20,20 @@
   background-position: center;
 }
 
-.main-slide-text {
+.main-slide::before {
+  content: "";
   position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4); /* adjust alpha as you like */
+  pointer-events: none;
+  z-index: 1;
+}
+
+.main-slide-text {
+  position: relative;
+  z-index: 2;
   top: 50%;
   left: 5%;
-  transform: translateY(-50%);
   color: white;
   max-width: 40%;
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
@@ -32,47 +41,87 @@
 
 .main-slide-text h2 {
   font-size: 2.5rem;
-  margin: 0 0 0.5rem;
+  margin-bottom: 0.5rem;
 }
 
 .main-slide-text p {
   font-size: 1.1rem;
 }
 
-/* Override default nav button colors/position if desired */
-.swiper-button-next,
-.swiper-button-prev {
+/* keep arrows white */
+.swiper-button-prev,
+.swiper-button-next {
   color: white;
 }
-
-/* --- Thumbnails Swiper Styles --- */
-.thumbs-swiper {
-  position: absolute;
-  bottom: 20px;
-  right: 5%;
-  width: 40%;
-  height: 250px;
-  box-sizing: border-box;
-}
-
-.thumbs-swiper .swiper-slide {
-  width: auto;
-  height: 100%;
-}
-
-.thumb-slide {
+.main-slider {
   position: relative;
   width: 100%;
   height: 100%;
+}
+/* position only the MAIN slider’s arrows under the slide */
+.main-swiper .swiper-button-prev,
+.main-swiper .swiper-button-next {
+  top: auto !important;
+  bottom: 20px !important;
+  left: 5% !important;
+  right: auto !important;
+}
+
+/* --- Thumbnails + nav container --- */
+.thumbs-nav-container {
+  position: absolute;
+  bottom: 10%;
+  right: 5%;
+  width: 35%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.thumbs-swiper {
+  width: 100%;
+  transform: translateX(120px);
+  height: 210px;
+  margin-bottom: 0.5rem;
+  overflow: hidden !important; /* clip outside */
+}
+
+.thumbs-swiper .swiper-wrapper {
+  display: flex !important;
+  justify-content: flex-start !important;
+  padding-right: calc((100% / 4.5) / 2);
+}
+
+.thumbs-swiper .swiper-slide {
+  overflow: visible !important; /* keep your shadows alive */
+}
+
+/* each thumbnail wrapper (for shadow) */
+.thumb-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+  overflow: hidden; /* ✔ keeps the shadow alive */
+  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.6);
+  transition: box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+/* the image itself */
+.thumb-slide {
+  height: 100%;
+  border-radius: 8px;
   background-size: cover;
   background-position: center;
-  border-radius: 8px;
   overflow: hidden;
 }
 
+/* caption overlay at bottom */
 .thumb-slide-text {
   position: absolute;
-  bottom: 0;
+  bottom: 50%;
   left: 0;
   width: 100%;
   padding: 0.5rem;
@@ -80,4 +129,62 @@
   color: white;
   font-size: 0.9rem;
   text-align: center;
+}
+
+/* nav + progress + counter row */
+.thumb-contents {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  gap: 1rem;
+}
+
+/* custom nav-buttons row */
+.nav-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.2rem;
+  margin-top: 0.5rem;
+}
+
+/* undo Swiper’s default absolute on these buttons */
+.thumbs-nav-container .swiper-button-prev,
+.thumbs-nav-container .swiper-button-next {
+  position: static !important;
+  margin: 0;
+}
+
+/* size/color of the < and > icons */
+.nav-buttons .swiper-button-prev,
+.nav-buttons .swiper-button-next {
+  width: 2.5rem;
+  height: 2.5rem;
+  color: white;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-buttons .swiper-button-prev::after,
+.nav-buttons .swiper-button-next::after {
+  font-size: 0.8rem !important; /* adjust down until it fits */
+  line-height: 1; /* tighten the line height */
+}
+
+/* thin progress bar */
+.progress-bar {
+  flex: 1;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 1px;
+  overflow: hidden;
+}
+.progress-fill {
+  height: 100%;
+  background: #fbbf24; /* same yellow as before */
+  transition: width 0.3s ease;
 }

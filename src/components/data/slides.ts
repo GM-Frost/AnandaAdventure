@@ -5,6 +5,7 @@ import {
   dubaiImg,
   kathmanduImg,
   yosmiteImg,
+  bhutanImg,
 } from "@/assets/images/images";
 
 export const slides: Slide[] = [
@@ -49,5 +50,13 @@ export const slides: Slide[] = [
     title: "Yosmite National Park",
     description: "Discover Yosmite",
     categories: ["Travel", "Adventure", "Park"],
+  },
+  {
+    id: "bhutan",
+    imageUrl: bhutanImg,
+    subtitle: "bhutan",
+    title: "Bhutan Art",
+    description: "Discover Bhutan",
+    categories: ["Travel", "Adventure", "city"],
   },
 ];
