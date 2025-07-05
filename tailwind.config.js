@@ -1,13 +1,21 @@
 module.exports = {
   theme: {
     screens: {
-      mobile: { max: "640px" }, // up to 640px
-      tablet: { min: "641px", max: "1024px" },
-      laptop: "1025px", // from 1025px up
-      desktop: "1440px",
+      sm: "640px",
+      md: "768px",
+      lg: "1024px",
+      xl: "1280px",
+      "2xl": "1536px",
+      "4k": "2560px", // add 4k if you need it
     },
-    extend: {
-      /* …colors, spacing, etc. */
+    container: {
+      center: true,
+      padding: {
+        DEFAULT: "1rem",
+        sm: "2rem",
+        lg: "4rem",
+      },
     },
+    extend: {},
   },
 };

@@ -43,50 +43,47 @@ const slideAnim = {
 export const CarouselWithThumbs: React.FC<Props> = ({ slides }) => {
   const [thumbsSwiper, setThumbsSwiper] = useState<SwiperClass | null>(null);
   const [current, setCurrent] = useState(0);
+  const [thumbCurrentSlide, setThumbCurrentSlide] = useState(current + 1);
+  const total = slides.length;
 
   const handleNext = useCallback(() => {
-    const nextIdx = (current + 1) % slides.length;
-    setCurrent(nextIdx);
-    if (thumbsSwiper) thumbsSwiper.slideNext(500);
-  }, [current, slides.length, thumbsSwiper]);
+    setCurrent((c) => (c + 1) % slides.length);
+  }, [slides.length]);
 
   const handlePrev = useCallback(() => {
-    const prevIdx = (current - 1 + slides.length) % slides.length;
-    setCurrent(prevIdx);
-    if (thumbsSwiper) thumbsSwiper.slidePrev(500);
-  }, [current, slides.length, thumbsSwiper]);
+    setCurrent((c) => (c - 1 + slides.length) % slides.length);
+  }, [slides.length]);
 
-  // Autoplay every 5s
   useEffect(() => {
     if (!thumbsSwiper) return;
-    thumbsSwiper.slideNext(500);
-  }, [current, thumbsSwiper]);
+    const upcoming = (current + 1) % slides.length;
+    // 600ms animation to slide the strip
+    thumbsSwiper.slideToLoop(upcoming, 600);
+  }, [current, thumbsSwiper, slides.length]);
 
   useEffect(() => {
-    const timer = setInterval(() => {
-      handleNext();
-    }, 4000);
+    const timer = setInterval(handleNext, 4000);
     return () => clearInterval(timer);
   }, [handleNext]);
 
   return (
-    <div className="carousel-container bg-black">
+    <div className="main-carousel relative h-[70vh] w-full overflow-hidden bg-black">
       {/* ——— Progress bar ——— */}
-      <div className="progress-track absolute top-0 left-0 w-full h-1 bg-white/20 z-20">
+      <div className="absolute top-0 left-0 w-full h-1 bg-white/20 z-20">
         <motion.div
-          key={current} // remounts on slide change
-          className="h-full bg-yellow-400"
+          key={current}
+          className="h-full bg-amber-400"
           initial={{ width: 0 }}
           animate={{ width: "100%" }}
           transition={{ duration: 4, ease: "linear" }}
         />
       </div>
       {/* --- Main carousel, purely Framer Motion --- */}
-      <div className="main-slider relative w-full h-full overflow-hidden">
+      <div className="relative w-full h-full">
         <AnimatePresence mode="wait">
           <motion.div
             key={slides[current].id}
-            className="main-slide relative"
+            className="relative w-full h-full bg-cover bg-center"
             style={{ backgroundImage: `url(${slides[current].imageUrl})` }}
             variants={slideAnim}
             initial="initial"
@@ -97,71 +94,77 @@ export const CarouselWithThumbs: React.FC<Props> = ({ slides }) => {
             }}
           >
             {/* <-- overlay: inset-0 covers the full area, bg-black with Opacity */}
-            <div className="absolute inset-0 bg-black/20 pointer-events-none" />
-
+            <div className="absolute inset-0 bg-black/40" />
             {/* bring your text above the overlay */}
-            <div className="main-slide-text relative z-10">
-              <h2>{slides[current].title}</h2>
-              {slides[current].subtitle && <p>{slides[current].subtitle}</p>}
+            <div className="relative z-10 top-1/2 left-5 max-w-[40%] transform -translate-y-1/2 text-white">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold">
+                {slides[current].title}
+              </h2>
+              {slides[current].subtitle && (
+                <p className="mt-2 text-base sm:text-lg md:text-xl">
+                  {slides[current].subtitle}
+                </p>
+              )}
             </div>
           </motion.div>
         </AnimatePresence>
       </div>
 
       {/* --- Thumbnails + progress + counter --- */}
-      <div className="thumbs-nav-container">
-        {/* 1) the Swiper strip */}
-        <Swiper
-          modules={[FreeMode]}
-          className="thumbs-swiper"
-          onSwiper={setThumbsSwiper}
-          spaceBetween={15}
-          slidesPerView={5}
-          allowTouchMove={false}
-          loop={true}
-          centeredSlides={false}
-        >
-          {slides.map((slide, idx) => (
-            <SwiperSlide key={slide.id} onClick={() => setCurrent(idx)}>
-              <div className="thumb-wrapper">
-                <div
-                  className="thumb-slide"
-                  style={{ backgroundImage: `url(${slide.imageUrl})` }}
+      <div className="thumbs-container absolute inset-x-0 bottom-[2%] w-full flex py-2 flex-col items-end">
+        <div className="thumb-slider basis-[80%] w-1/2 items-center justify-end">
+          <Swiper
+            className="thumb-slider-img overflow-visible"
+            modules={[FreeMode]}
+            onSwiper={setThumbsSwiper}
+            spaceBetween={15}
+            slidesPerView={6}
+            loop={true}
+            allowTouchMove={false}
+          >
+            {slides.map((slide, idx) => (
+              <SwiperSlide key={slide.id} onClick={() => setCurrent(idx)}>
+                <img
+                  src={slide.imageUrl}
+                  alt={slide.title}
+                  className="thumb-image w-full h-full object-cover rounded-sm"
                 />
-                <div className="thumb-slide-text">
+                <div className="thumb-image-text">
                   <h4>{slide.title}</h4>
                 </div>
-              </div>
-            </SwiperSlide>
-          ))}
-        </Swiper>
-
-        {/* 2) arrows + progress + counter */}
-        <div className="thumb-contents z-10">
-          <div className="nav-buttons">
-            <button
-              onClick={handlePrev}
-              aria-label="Prev"
-              className="swiper-button-prev"
-            />
-            <button
-              onClick={handleNext}
-              aria-label="Next"
-              className="swiper-button-next"
-            />
-          </div>
-          <div className="progress-bar">
-            <div className="flex-1 h-[2px] bg-white/10 rounded overflow-hidden">
-              <div
-                className="h-full bg-yellow-400 transition-all duration-300"
-                style={{
-                  width: `${(current / slides.length) * 100}%`,
-                }}
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
+        <div className="thumb-footer-content flex w-full items-center justify-end p-4 flex-grow">
+          <div className="thumb-contents flex w-full max-w-xl items-center justify-between z-10">
+            {/* ——— Navigation Buttons ——— */}
+            <div className="nav-buttons">
+              <button
+                onClick={handlePrev}
+                aria-label="Prev"
+                className="swiper-button-prev"
+              />
+              <button
+                onClick={handleNext}
+                aria-label="Next"
+                className="swiper-button-next"
               />
             </div>
-          </div>
-          <div className="slide-counter text-white font-bold text-4xl flex-shrink-0">
-            {String(current + 1).padStart(2, "0")}
+            {/* Progress Bar */}
+            <div className="slide-progress-container flex-grow mx-4 max-w-lg">
+              <div className="relative h-[2px] bg-gray-300 rounded overflow-hidden">
+                <div
+                  className="absolute top-0 left-0 h-full bg-amber-400 rounded  transition-all duration-600"
+                  style={{ width: `${((current + 1) / total) * 100}%` }}
+                />
+              </div>
+            </div>
+
+            {/* Slide Counter */}
+            <div className="slide-counter text-white font-bold text-4xl flex-shrink-0">
+              {String(current + 1).padStart(2, "0")}
+            </div>
           </div>
         </div>
       </div>

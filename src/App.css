@@ -9,10 +9,3 @@
   --color-secondary-light: #f472b6;
   --color-secondary-dark: #db2777;
 }
-/* 
-@layer base {
-  :root { --view: desktop; }
-  @screen laptop { :root { --view: laptop; } }
-  @screen tablet { :root { --view: tablet; } }
-  @screen mobile { :root { --view: mobile; } }
-} */

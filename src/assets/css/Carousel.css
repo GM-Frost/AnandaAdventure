@@ -1,125 +1,50 @@
-.carousel-container {
-  position: relative;
-  width: 100%;
-  height: 700px;
-  overflow: hidden;
-}
+@import "../../styles/breakeven.css";
 
-/* --- Main Swiper Styles --- */
-.main-swiper,
-.main-swiper .swiper-wrapper {
-  width: 100%;
-  height: 100%;
+.thumb-slider-img {
+  right: -30%;
 }
-
-.main-slide {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  background-size: cover;
-  background-position: center;
+.main-carousel {
+  min-height: 400px;
 }
-
-.main-slide::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.4); /* adjust alpha as you like */
-  pointer-events: none;
-  z-index: 1;
-}
-
-.main-slide-text {
-  position: relative;
-  z-index: 2;
-  top: 50%;
-  left: 5%;
-  color: white;
-  max-width: 40%;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
-}
-
-.main-slide-text h2 {
-  font-size: 2.5rem;
-  margin-bottom: 0.5rem;
-}
-
-.main-slide-text p {
-  font-size: 1.1rem;
-}
-
-/* keep arrows white */
-.swiper-button-prev,
-.swiper-button-next {
-  color: white;
-}
-.main-slider {
-  position: relative;
-  width: 100%;
-  height: 100%;
-}
-/* position only the MAIN slider’s arrows under the slide */
-.main-swiper .swiper-button-prev,
-.main-swiper .swiper-button-next {
-  top: auto !important;
-  bottom: 20px !important;
-  left: 5% !important;
-  right: auto !important;
-}
-
-/* --- Thumbnails + nav container --- */
-.thumbs-nav-container {
-  position: absolute;
-  bottom: 10%;
-  right: 5%;
-  width: 35%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  box-sizing: border-box;
-}
-
-.thumbs-swiper {
-  width: 100%;
-  transform: translateX(120px);
-  height: 210px;
-  margin-bottom: 0.5rem;
-  overflow: hidden !important; /* clip outside */
-}
-
-.thumbs-swiper .swiper-wrapper {
-  display: flex !important;
-  justify-content: flex-start !important;
-  padding-right: calc((100% / 4.5) / 2);
-}
-
-.thumbs-swiper .swiper-slide {
-  overflow: visible !important; /* keep your shadows alive */
-}
-
-/* each thumbnail wrapper (for shadow) */
-.thumb-wrapper {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  border-radius: 5px;
-  overflow: hidden; /* ✔ keeps the shadow alive */
-  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.6);
+.thumb-image {
+  box-shadow: 8px 8px 8px rgba(0, 0, 0, 0.6);
   transition: box-shadow 0.3s ease;
   cursor: pointer;
 }
 
-/* the image itself */
-.thumb-slide {
-  height: 100%;
-  border-radius: 8px;
-  background-size: cover;
-  background-position: center;
-  overflow: hidden;
+/* responsive tweaks */
+@media (--mobile-md) {
+  .thumbs-container {
+    display: none;
+  }
+}
+@media (--laptop-sm) {
+  .thumbs-container {
+    min-height: 200px;
+  }
+  .thumb-slider-img {
+    height: 160px;
+  }
+  .thumb-image {
+    height: 100px;
+  }
+}
+@media (--laptop-md) {
+  .thumbs-container {
+    min-height: 320px;
+  }
+}
+@media (--laptop-lg) {
+  .thumbs-container {
+    display: none;
+  }
+  .thumb-image-content {
+    display: none;
+  }
 }
 
 /* caption overlay at bottom */
-.thumb-slide-text {
+.thumb-image-text {
   position: absolute;
   bottom: 50%;
   left: 0;
@@ -127,19 +52,10 @@
   padding: 0.5rem;
   background: rgba(0, 0, 0, 0.5);
   color: white;
-  font-size: 0.9rem;
+  font-size: clamp(0.7rem, 2vw, 0.9rem);
   text-align: center;
 }
 
-/* nav + progress + counter row */
-.thumb-contents {
-  display: flex;
-  align-items: center;
-  width: 100%;
-  gap: 1rem;
-}
-
-/* custom nav-buttons row */
 .nav-buttons {
   display: flex;
   justify-content: center;
@@ -148,20 +64,29 @@
   margin-top: 0.5rem;
 }
 
-/* undo Swiper’s default absolute on these buttons */
-.thumbs-nav-container .swiper-button-prev,
-.thumbs-nav-container .swiper-button-next {
-  position: static !important;
-  margin: 0;
+.thumb-footer-content .nav-buttons button.swiper-button-prev,
+.thumb-footer-content .nav-buttons button.swiper-button-next {
+  width: 2rem !important;
+  height: 2rem !important;
+  border: 1px solid white !important;
+  border-radius: 50% !important;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  background: transparent !important;
+}
+.thumb-footer-content .nav-buttons button.swiper-button-prev::after,
+.thumb-footer-content .nav-buttons button.swiper-button-next::after {
+  font-size: 0.8rem !important;
+  color: white !important;
 }
 
 /* size/color of the < and > icons */
 .nav-buttons .swiper-button-prev,
 .nav-buttons .swiper-button-next {
-  width: 2.5rem;
-  height: 2.5rem;
+  width: 2rem;
+  height: 2rem;
   color: white;
-  background-color: rgba(255, 255, 255, 0.1);
   border: 1px solid white;
   border-radius: 50%;
   display: flex;
@@ -171,20 +96,13 @@
 
 .nav-buttons .swiper-button-prev::after,
 .nav-buttons .swiper-button-next::after {
-  font-size: 0.8rem !important; /* adjust down until it fits */
-  line-height: 1; /* tighten the line height */
+  font-size: 0.8rem !important;
+  line-height: 1;
+  color: white;
 }
 
-/* thin progress bar */
-.progress-bar {
-  flex: 1;
-  height: 2px;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 1px;
-  overflow: hidden;
-}
-.progress-fill {
-  height: 100%;
-  background: #fbbf24; /* same yellow as before */
-  transition: width 0.3s ease;
+.nav-buttons .swiper-button-prev,
+.nav-buttons .swiper-button-next {
+  position: static !important;
+  margin: 0;
 }
