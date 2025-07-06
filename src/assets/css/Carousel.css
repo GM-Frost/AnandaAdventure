@@ -1,7 +1,28 @@
 @import "../../styles/breakeven.css";
 
-.thumb-slider-img {
-  right: -30%;
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.thumb-swiper-img {
+  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.5);
+  transition: box-shadow 0.3s ease;
+}
+.thumb-slider .swiper-slide {
+  /* no fade/transitions on any slide at all */
+  transition: none !important;
+}
+
+.thumb-slider .swiper-slide-thumb-active .thumb-swiper-img {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  transition: none !important;
+  pointer-events: none !important;
+  will-change: opacity;
 }
 .main-carousel {
   min-height: 400px;
@@ -80,6 +101,9 @@
   font-size: 0.8rem !important;
   color: white !important;
 }
+/***************** THUMB SLIDER BEGINS *****************/
+
+/***************** THUMB SLIDER ENDS *****************/
 
 /* size/color of the < and > icons */
 .nav-buttons .swiper-button-prev,

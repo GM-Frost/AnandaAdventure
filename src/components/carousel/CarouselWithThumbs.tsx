@@ -1,4 +1,10 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, {
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import type { Swiper as SwiperClass } from "swiper";
 import {
@@ -8,6 +14,9 @@ import {
   EffectCoverflow,
   FreeMode,
   EffectFade,
+  Pagination,
+  Scrollbar,
+  A11y,
 } from "swiper/modules";
 
 import "swiper/css";
@@ -17,13 +26,19 @@ import "swiper/css/effect-fade";
 import "@/assets/css/Carousel.css";
 
 import type { Slide } from "@/components/types/Slide";
+import {
+  motion,
+  Variants,
+  AnimatePresence,
+  useAnimation,
+  delay,
+} from "framer-motion";
 
 import "swiper/css/effect-fade";
 
 type Props = {
   slides: Slide[];
 };
-import { motion, Variants, AnimatePresence } from "framer-motion";
 
 const textVariants: Variants = {
   hidden: { y: 20, opacity: 0 },
@@ -41,31 +56,20 @@ const slideAnim = {
 };
 
 export const CarouselWithThumbs: React.FC<Props> = ({ slides }) => {
-  const [thumbsSwiper, setThumbsSwiper] = useState<SwiperClass | null>(null);
   const [current, setCurrent] = useState(0);
-  const [thumbCurrentSlide, setThumbCurrentSlide] = useState(current + 1);
-  const total = slides.length;
+  const thumbSwiperRef = useRef<SwiperClass | null>(null);
 
-  const handleNext = useCallback(() => {
-    setCurrent((c) => (c + 1) % slides.length);
-  }, [slides.length]);
+  const totalSlide = slides.length;
 
-  const handlePrev = useCallback(() => {
-    setCurrent((c) => (c - 1 + slides.length) % slides.length);
-  }, [slides.length]);
+  const handlePrev = () => setCurrent((c) => (c - 1 + totalSlide) % totalSlide);
+  const handleNext = () => setCurrent((c) => (c + 1) % totalSlide);
 
   useEffect(() => {
-    if (!thumbsSwiper) return;
-    const upcoming = (current + 1) % slides.length;
-    // 600ms animation to slide the strip
-    thumbsSwiper.slideToLoop(upcoming, 600);
-  }, [current, thumbsSwiper, slides.length]);
-
-  useEffect(() => {
-    const timer = setInterval(handleNext, 4000);
-    return () => clearInterval(timer);
-  }, [handleNext]);
-
+    const swiper = thumbSwiperRef.current;
+    if (swiper) {
+      swiper.slideToLoop(current, 3000);
+    }
+  }, [current]);
   return (
     <div className="main-carousel relative h-[70vh] w-full overflow-hidden bg-black">
       {/* ——— Progress bar ——— */}
@@ -84,18 +88,17 @@ export const CarouselWithThumbs: React.FC<Props> = ({ slides }) => {
           <motion.div
             key={slides[current].id}
             className="relative w-full h-full bg-cover bg-center"
-            style={{ backgroundImage: `url(${slides[current].imageUrl})` }}
-            variants={slideAnim}
-            initial="initial"
-            animate="animate"
+            style={{
+              backgroundImage: `url(${slides[current].imageUrl})`,
+            }}
+            initial={{ opacity: 0, scale: 0 }}
+            animate={{ opacity: 1, scale: 1 }}
             transition={{
               duration: 0.4,
               scale: { type: "spring", visualDuration: 0.7, bounce: 0 },
             }}
           >
-            {/* <-- overlay: inset-0 covers the full area, bg-black with Opacity */}
             <div className="absolute inset-0 bg-black/40" />
-            {/* bring your text above the overlay */}
             <div className="relative z-10 top-1/2 left-5 max-w-[40%] transform -translate-y-1/2 text-white">
               <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold">
                 {slides[current].title}
@@ -112,33 +115,44 @@ export const CarouselWithThumbs: React.FC<Props> = ({ slides }) => {
 
       {/* --- Thumbnails + progress + counter --- */}
       <div className="thumbs-container absolute inset-x-0 bottom-[2%] w-full flex py-2 flex-col items-end">
+        {/* ——— Thumb Slider Start ——— */}
         <div className="thumb-slider basis-[80%] w-1/2 items-center justify-end">
           <Swiper
-            className="thumb-slider-img overflow-visible"
-            modules={[FreeMode]}
-            onSwiper={setThumbsSwiper}
-            spaceBetween={15}
-            slidesPerView={6}
+            onSwiper={(s) => (thumbSwiperRef.current = s)}
+            onRealIndexChange={(s) => setCurrent(s.realIndex)}
+            modules={[Autoplay, FreeMode, Navigation]}
+            spaceBetween={10}
+            slidesPerView={5}
             loop={true}
+            freeMode={true}
+            watchSlidesProgress={true}
+            autoplay={{ delay: 4000, disableOnInteraction: false }}
             allowTouchMove={false}
+            simulateTouch={false}
           >
             {slides.map((slide, idx) => (
-              <SwiperSlide key={slide.id} onClick={() => setCurrent(idx)}>
-                <img
-                  src={slide.imageUrl}
-                  alt={slide.title}
-                  className="thumb-image w-full h-full object-cover rounded-sm"
-                />
-                <div className="thumb-image-text">
-                  <h4>{slide.title}</h4>
+              <SwiperSlide
+                key={slide.id}
+                className={` ${
+                  idx === current || idx + 1 === current ? "invisible" : ""
+                }
+                grayscale-50
+                `}
+              >
+                <div className="thumb-swiper-img mb-1 rounded-lg ">
+                  <img
+                    src={slide.imageUrl}
+                    alt={`Thumbnail ${idx + 1}`}
+                    className="w-full h-24  md:h-45 object-cover rounded-lg"
+                  />
                 </div>
               </SwiperSlide>
             ))}
           </Swiper>
         </div>
+        {/* ——— Thumb Slider Ends ——— */}
         <div className="thumb-footer-content flex w-full items-center justify-end p-4 flex-grow">
           <div className="thumb-contents flex w-full max-w-xl items-center justify-between z-10">
-            {/* ——— Navigation Buttons ——— */}
             <div className="nav-buttons">
               <button
                 onClick={handlePrev}
@@ -151,17 +165,14 @@ export const CarouselWithThumbs: React.FC<Props> = ({ slides }) => {
                 className="swiper-button-next"
               />
             </div>
-            {/* Progress Bar */}
             <div className="slide-progress-container flex-grow mx-4 max-w-lg">
               <div className="relative h-[2px] bg-gray-300 rounded overflow-hidden">
                 <div
-                  className="absolute top-0 left-0 h-full bg-amber-400 rounded  transition-all duration-600"
-                  style={{ width: `${((current + 1) / total) * 100}%` }}
+                  className="absolute top-0 left-0 h-full bg-amber-400 rounded transition-all duration-600"
+                  style={{ width: `${((current + 1) / totalSlide) * 100}%` }}
                 />
               </div>
             </div>
-
-            {/* Slide Counter */}
             <div className="slide-counter text-white font-bold text-4xl flex-shrink-0">
               {String(current + 1).padStart(2, "0")}
             </div>
