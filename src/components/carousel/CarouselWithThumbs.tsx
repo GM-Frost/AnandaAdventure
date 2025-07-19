@@ -32,6 +32,7 @@ import {
   AnimatePresence,
   useAnimation,
   delay,
+  useInView,
 } from "framer-motion";
 
 import "swiper/css/effect-fade";
@@ -55,10 +56,22 @@ const slideAnim = {
   exit: { opacity: 0, scale: 0 },
 };
 
+const pullupVariant = {
+  initial: { y: 20, opacity: 0 },
+  animate: (i: number) => ({
+    y: 0,
+    opacity: 1,
+    transition: {
+      delay: i * 0.1,
+    },
+  }),
+};
+
 export const CarouselWithThumbs: React.FC<Props> = ({ slides }) => {
   const [current, setCurrent] = useState(0);
   const thumbSwiperRef = useRef<SwiperClass | null>(null);
-
+  const containerRef = useRef<HTMLDivElement>(null);
+  const isInView = useInView(containerRef, { once: true });
   const totalSlide = slides.length;
 
   const handlePrev = () => setCurrent((c) => (c - 1 + totalSlide) % totalSlide);
@@ -71,7 +84,10 @@ export const CarouselWithThumbs: React.FC<Props> = ({ slides }) => {
     }
   }, [current]);
   return (
-    <div className="main-carousel relative h-[70vh] w-full overflow-hidden bg-black">
+    <div
+      ref={containerRef}
+      className="main-carousel relative h-[70vh] w-full overflow-hidden bg-black"
+    >
       {/* ——— Progress bar ——— */}
       <div className="absolute top-0 left-0 w-full h-1 bg-white/20 z-20">
         <motion.div
@@ -100,14 +116,38 @@ export const CarouselWithThumbs: React.FC<Props> = ({ slides }) => {
           >
             <div className="absolute inset-0 bg-black/40" />
             <div className="relative z-10 top-1/2 left-5 max-w-[40%] transform -translate-y-1/2 text-white">
-              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold">
-                {slides[current].title}
-              </h2>
-              {slides[current].subtitle && (
-                <p className="mt-2 text-base sm:text-lg md:text-xl">
-                  {slides[current].subtitle}
-                </p>
-              )}
+              <AnimatePresence>
+                <motion.div
+                  key={slides[current].id}
+                  initial="initial"
+                  animate="visible"
+                  variants={pullupVariant}
+                  transition={{ duration: 1.0, ease: "anticipate" }}
+                  className="
+                    absolute 
+                    bottom-3 
+                    bg-full
+                    text-white 
+                    text-xs md:text-sm lg:text-base 
+                    px-2 md:px-3 
+                    py-1 md:py-1.5 
+                    rounded
+                    flex
+                    flex-col
+                    gap-4
+                  "
+                >
+                  {slides[current].subtitle && (
+                    <p className="mt-2 text-base sm:text-lg md:text-xl">
+                      {slides[current].subtitle}
+                    </p>
+                  )}
+                  <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold">
+                    {slides[current].title}
+                  </h2>
+                  {slides[current].description}
+                </motion.div>
+              </AnimatePresence>
             </div>
           </motion.div>
         </AnimatePresence>
@@ -136,15 +176,46 @@ export const CarouselWithThumbs: React.FC<Props> = ({ slides }) => {
                 className={` ${
                   idx === current || idx + 1 === current ? "invisible" : ""
                 }
-                grayscale-50
+              sepia-40
                 `}
               >
-                <div className="thumb-swiper-img mb-1 rounded-lg ">
+                <div className="thumb-swiper-img mb-3 rounded-lg ">
                   <img
                     src={slide.imageUrl}
                     alt={`Thumbnail ${idx + 1}`}
                     className="w-full h-24  md:h-45 object-cover rounded-lg"
                   />
+
+                  <AnimatePresence>
+                    <motion.div
+                      key={slide.id}
+                      initial="hidden"
+                      animate="visible"
+                      exit="hidden"
+                      variants={textVariants}
+                      transition={{ duration: 0.5, ease: "easeOut" }}
+                      className="
+                    absolute 
+                    bottom-3 
+                    bg-full
+                    text-white 
+                    text-xs md:text-sm lg:text-base 
+                    px-2 md:px-3 
+                    py-1 md:py-1.5 
+                    rounded
+                    flex
+                    flex-col
+                    gap-4
+                  "
+                    >
+                      <div className="leading-tight text-sm">
+                        {slide.subtitle}
+                      </div>
+                      <div className="font-semibold mt-0.5 text-xl">
+                        {slide.title}
+                      </div>
+                    </motion.div>
+                  </AnimatePresence>
                 </div>
               </SwiperSlide>
             ))}
