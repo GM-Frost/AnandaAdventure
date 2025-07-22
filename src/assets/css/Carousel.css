@@ -1,4 +1,4 @@
-@import "../../styles/breakeven.css";
+@import '../../styles/breakeven.css';
 
 *,
 *::after,
@@ -33,35 +33,46 @@
   cursor: pointer;
 }
 
-/* responsive tweaks */
-@media (--mobile-md) {
-  .thumbs-container {
+/******************************** responsive tweaks ******************************** /
+
+
+/* 1. All phones (portrait & landscape) ≤ 767.98px */
+@media (max-width: 767.98px), (max-height: 767.98px) {
+  .thumb-slider {
+    display: none !important;
+  }
+}
+
+/* 2. All iPads / standard tablets 768px–1023.98px */
+@media (min-width: 768px) and (max-width: 1023.98px) {
+  /* tablet‑specific styles here */
+  .thumb-slider {
+    display: none;
+  }
+  .thumb-swiper-img .thumb-subtitle,
+  .thumb-swiper-img .thumb-title {
     display: none;
   }
 }
-@media (--laptop-sm) {
-  .thumbs-container {
-    min-height: 200px;
-  }
-  .thumb-slider-img {
-    height: 160px;
-  }
-  .thumb-image {
-    height: 100px;
-  }
+
+/* 3. Big iPads (e.g. iPad Pro 11" & 12.9") 1024px–1279.98px */
+@media (min-width: 1024px) and (max-width: 1279.98px) {
+  /* large‑tablet tweaks */
 }
-@media (--laptop-md) {
-  .thumbs-container {
-    min-height: 320px;
-  }
+
+/* 4. Laptops & small desktops 1280px–1919.98px */
+@media (min-width: 1280px) and (max-width: 1919.98px) {
+  /* laptop layouts */
 }
-@media (--laptop-lg) {
-  .thumbs-container {
-    display: none;
-  }
-  .thumb-image-content {
-    display: none;
-  }
+
+/* 5. Full‑HD → 2K screens 1920px–2559.98px */
+@media (min-width: 1920px) and (max-width: 2559.98px) {
+  /* wide‑desktop / 1080p→2K */
+}
+
+/* 6. 2K → 4K UHD screens 2560px–3839.98px */
+@media (min-width: 2560px) and (max-width: 3839.98px) {
+  /* ultra‑high‑res screens up to 4K */
 }
 
 /* caption overlay at bottom */

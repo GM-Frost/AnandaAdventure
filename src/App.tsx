@@ -1,7 +1,5 @@
-import "./App.css";
-
-import { slides } from "components/data/slides";
-import { CarouselWithThumbs } from "@/components/carousel/CarouselWithThumbs";
+import { CarouselWithThumbs } from '@/components/carousel/CarouselWithThumbs';
+import { slides } from 'components/data/slides';
 
 function App() {
   return <CarouselWithThumbs slides={slides} />;
