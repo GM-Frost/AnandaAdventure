@@ -39,7 +39,10 @@
 /* 1. All phones (portrait & landscape) ≤ 767.98px */
 @media (max-width: 767.98px), (max-height: 767.98px) {
   .thumb-slider {
-    display: none !important;
+    visibility: hidden;
+    height: 0;
+    pointer-events: none;
+    overflow: hidden;
   }
 }
 

@@ -1,0 +1,70 @@
+.himalayas {
+  position: absolute;
+  left: 0;
+  bottom: -50px;
+  width: 100%;
+  height: 80px;
+  z-index: 2;
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  background-position: center top;
+  pointer-events: none;
+}
+
+/******************************** responsive tweaks ******************************** /
+
+/* 1. All phones (portrait & landscape) ≤ 767.98px */
+@media (max-width: 767.98px), (max-height: 767.98px) {
+  .himalayas {
+    height: 40px;
+    bottom: -30px;
+    background-size: 100% auto;
+  }
+}
+
+/* 2. All iPads / standard tablets 768px–1023.98px */
+@media (min-width: 768px) and (max-width: 1023.98px) {
+  .himalayas {
+    height: 60px;
+    bottom: -40px;
+    background-size: 100% auto;
+  }
+}
+
+/* 3. Big iPads (e.g. iPad Pro 11" & 12.9") 1024px–1279.98px */
+@media (min-width: 1024px) and (max-width: 1279.98px) {
+  /* large‑tablet tweaks */
+  .himalayas {
+    height: 70px;
+    bottom: -45px;
+    background-size: 100% auto;
+  }
+}
+
+/* 4. Laptops & small desktops 1280px–1919.98px */
+@media (min-width: 1280px) and (max-width: 1919.98px) {
+  .himalayas {
+    height: 80px;
+    bottom: -50px;
+    background-size: 100% auto;
+  }
+}
+
+/* 5. Full‑HD → 2K screens 1920px–2559.98px */
+@media (min-width: 1920px) and (max-width: 2559.98px) {
+  .himalayas {
+    height: 100px;
+    bottom: -55px;
+    background-size: 100% auto;
+  }
+}
+
+/* 6. 2K → 4K UHD screens 2560px–3839.98px */
+@media (min-width: 2560px) and (max-width: 3839.98px) {
+  /* ultra‑high‑res screens up to 4K */
+  .himalayas {
+    height: 120px;
+    bottom: -60px;
+    background-size: 100% auto;
+  }
+}

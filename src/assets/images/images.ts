@@ -5,6 +5,7 @@ import dubaiImg from './dubai.jpg';
 import hotAirImg from './hotair.jpg';
 import kathmanduImg from './kathmandu.jpg';
 import yosmiteImg from './yosmite.jpg';
+import himalayanRangeImg from './himalayan-range.png';
 
 export {
   beachImg,
@@ -14,4 +15,5 @@ export {
   kathmanduImg,
   tilakImg,
   yosmiteImg,
+  himalayanRangeImg,
 };

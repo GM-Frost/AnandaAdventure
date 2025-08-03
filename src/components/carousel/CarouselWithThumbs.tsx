@@ -82,8 +82,12 @@ export const CarouselWithThumbs: React.FC<Props> = ({ slides }) => {
   });
   const totalSlide = slides.length;
 
-  const handlePrev = () => setCurrent(c => (c - 1 + totalSlide) % totalSlide);
-  const handleNext = () => setCurrent(c => (c + 1) % totalSlide);
+  const handlePrev = () => {
+    setCurrent(c => (c - 1 + totalSlide) % totalSlide);
+  };
+  const handleNext = () => {
+    setCurrent(c => (c + 1) % totalSlide);
+  };
 
   useEffect(() => {
     const swiper = thumbSwiperRef.current;
@@ -91,6 +95,17 @@ export const CarouselWithThumbs: React.FC<Props> = ({ slides }) => {
       swiper.slideToLoop(current, 3000);
     }
   }, [current]);
+
+  useEffect(() => {
+    const timeout = window.setTimeout(() => {
+      setCurrent(c => (c + 1) % totalSlide);
+    }, 4000);
+
+    return () => {
+      window.clearTimeout(timeout);
+    };
+  }, [current, totalSlide]);
+
   return (
     <div
       ref={containerRef}
