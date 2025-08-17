@@ -1,7 +1,7 @@
-.himalayas {
+.mountain-divider {
   position: absolute;
   left: 0;
-  bottom: -50px;
+  bottom: -35px;
   width: 100%;
   height: 80px;
   z-index: 2;
@@ -13,20 +13,28 @@
 
 /******************************** responsive tweaks ******************************** /
 
+
+/* 0. All phones (portrait & landscape) ≤ 479.98px */
+@media (max-width: 479.98px), (max-height: 479.98px) {
+  .mountain-divider {
+    bottom: 0;
+    background-size: 100% auto;
+  }
+}
 /* 1. All phones (portrait & landscape) ≤ 767.98px */
 @media (max-width: 767.98px), (max-height: 767.98px) {
-  .himalayas {
-    height: 40px;
-    bottom: -30px;
+  .mountain-divider {
+    height: 13px;
+    bottom: -5px;
     background-size: 100% auto;
   }
 }
 
 /* 2. All iPads / standard tablets 768px–1023.98px */
 @media (min-width: 768px) and (max-width: 1023.98px) {
-  .himalayas {
-    height: 60px;
-    bottom: -40px;
+  .mountain-divider {
+    height: 21px;
+    bottom: -5px;
     background-size: 100% auto;
   }
 }
@@ -34,27 +42,27 @@
 /* 3. Big iPads (e.g. iPad Pro 11" & 12.9") 1024px–1279.98px */
 @media (min-width: 1024px) and (max-width: 1279.98px) {
   /* large‑tablet tweaks */
-  .himalayas {
-    height: 70px;
-    bottom: -45px;
+  .mountain-divider {
+    height: 30px;
+    bottom: -5px;
     background-size: 100% auto;
   }
 }
 
 /* 4. Laptops & small desktops 1280px–1919.98px */
 @media (min-width: 1280px) and (max-width: 1919.98px) {
-  .himalayas {
-    height: 80px;
-    bottom: -50px;
+  .mountain-divider {
+    height: 41px;
+    bottom: -8px;
     background-size: 100% auto;
   }
 }
 
 /* 5. Full‑HD → 2K screens 1920px–2559.98px */
 @media (min-width: 1920px) and (max-width: 2559.98px) {
-  .himalayas {
+  .mountain-divider {
     height: 100px;
-    bottom: -55px;
+    bottom: -35px;
     background-size: 100% auto;
   }
 }
@@ -62,9 +70,9 @@
 /* 6. 2K → 4K UHD screens 2560px–3839.98px */
 @media (min-width: 2560px) and (max-width: 3839.98px) {
   /* ultra‑high‑res screens up to 4K */
-  .himalayas {
+  .mountain-divider {
     height: 120px;
-    bottom: -60px;
+    bottom: -35px;
     background-size: 100% auto;
   }
 }
