@@ -11,6 +11,9 @@ import logoImg from '../logo/Logo-Half.svg';
 import blackBorderImg from './blackborder.png';
 import aboutSectionImg from './aboutsection-new.png';
 import trekImg from './trek-bg.png';
+import doodleImg1 from './doodle1.png';
+import doodleImg2 from './doodle2.png';
+import doodleImg3 from './doodle3.png';
 export {
   beachImg,
   bhutanImg,
@@ -25,4 +28,7 @@ export {
   blackBorderImg,
   aboutSectionImg,
   trekImg,
+  doodleImg1,
+  doodleImg2,
+  doodleImg3,
 };

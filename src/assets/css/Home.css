@@ -61,7 +61,7 @@
 /* 5. Full‑HD → 2K screens 1920px–2559.98px */
 @media (min-width: 1920px) and (max-width: 2559.98px) {
   .mountain-divider {
-    height: 100px;
+    height: 70px;
     bottom: -35px;
     background-size: 100% auto;
   }
@@ -71,8 +71,16 @@
 @media (min-width: 2560px) and (max-width: 3839.98px) {
   /* ultra‑high‑res screens up to 4K */
   .mountain-divider {
-    height: 120px;
+    height: 80px;
     bottom: -35px;
     background-size: 100% auto;
   }
+}
+
+.scrollbar-hide {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
 }
