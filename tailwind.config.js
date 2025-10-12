@@ -1,23 +1,21 @@
-// /** @type {import('tailwindcss').Config} */
-// module.exports = {
-//   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
-//   darkMode: "class",
-//   theme: {
-//     extend: {
-//       colors: {
-//         primary: "var(--color-primary)",
-//         "primary-light": "var(--color-primary-light)",
-//         "primary-dark": "var(--color-primary-dark)",
-
-//         secondary: "var(--color-secondary)",
-//         "secondary-light": "var(--color-secondary-light)",
-//         "secondary-dark": "var(--color-secondary-dark)",
-//       },
-//       textColor: {
-//         "on-primary": "var(--color-on-primary)",
-//         "on-secondary": "var(--color-on-secondary)",
-//       },
-//     },
-//   },
-//   plugins: [],
-// };
+module.exports = {
+  theme: {
+    screens: {
+      sm: '640px',
+      md: '768px',
+      lg: '1024px',
+      xl: '1280px',
+      '2xl': '1536px',
+      '4k': '2560px', // add 4k if you need it
+    },
+    container: {
+      center: true,
+      padding: {
+        DEFAULT: '1rem',
+        sm: '2rem',
+        lg: '4rem',
+      },
+    },
+    extend: {},
+  },
+};

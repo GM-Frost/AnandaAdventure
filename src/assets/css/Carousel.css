@@ -1,0 +1,146 @@
+@import '../../styles/breakeven.css';
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.thumb-swiper-img {
+  box-shadow: 8px 8px 8px rgba(0, 0, 0, 0.5);
+  transition: box-shadow 0.3s ease;
+}
+.thumb-slider .swiper-slide {
+  /* no fade/transitions on any slide at all */
+  transition: none !important;
+}
+
+.thumb-slider .swiper-slide-thumb-active .thumb-swiper-img {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  transition: none !important;
+  pointer-events: none !important;
+  will-change: opacity;
+}
+.main-carousel {
+  min-height: 400px;
+}
+.thumb-image {
+  box-shadow: 8px 8px 8px rgba(0, 0, 0, 0.6);
+  transition: box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+/******************************** responsive tweaks ******************************** /
+
+
+/* 1. All phones (portrait & landscape) ≤ 767.98px */
+@media (max-width: 767.98px), (max-height: 767.98px) {
+  .thumb-slider {
+    visibility: hidden;
+    height: 0;
+    pointer-events: none;
+    overflow: hidden;
+  }
+}
+
+/* 2. All iPads / standard tablets 768px–1023.98px */
+@media (min-width: 768px) and (max-width: 1023.98px) {
+  /* tablet‑specific styles here */
+  .thumb-slider {
+    display: none;
+  }
+  .thumb-swiper-img .thumb-subtitle,
+  .thumb-swiper-img .thumb-title {
+    display: none;
+  }
+}
+
+/* 3. Big iPads (e.g. iPad Pro 11" & 12.9") 1024px–1279.98px */
+@media (min-width: 1024px) and (max-width: 1279.98px) {
+  /* large‑tablet tweaks */
+}
+
+/* 4. Laptops & small desktops 1280px–1919.98px */
+@media (min-width: 1280px) and (max-width: 1919.98px) {
+  /* laptop layouts */
+}
+
+/* 5. Full‑HD → 2K screens 1920px–2559.98px */
+@media (min-width: 1920px) and (max-width: 2559.98px) {
+  /* wide‑desktop / 1080p→2K */
+}
+
+/* 6. 2K → 4K UHD screens 2560px–3839.98px */
+@media (min-width: 2560px) and (max-width: 3839.98px) {
+  /* ultra‑high‑res screens up to 4K */
+}
+
+/* caption overlay at bottom */
+.thumb-image-text {
+  position: absolute;
+  bottom: 50%;
+  left: 0;
+  width: 100%;
+  padding: 0.5rem;
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  font-size: clamp(0.7rem, 2vw, 0.9rem);
+  text-align: center;
+}
+
+.nav-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.2rem;
+  margin-top: 0.5rem;
+}
+
+.thumb-footer-content .nav-buttons button.swiper-button-prev,
+.thumb-footer-content .nav-buttons button.swiper-button-next {
+  width: 2rem !important;
+  height: 2rem !important;
+  border: 1px solid white !important;
+  border-radius: 50% !important;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  background: transparent !important;
+}
+.thumb-footer-content .nav-buttons button.swiper-button-prev::after,
+.thumb-footer-content .nav-buttons button.swiper-button-next::after {
+  font-size: 0.8rem !important;
+  color: white !important;
+}
+/***************** THUMB SLIDER BEGINS *****************/
+
+/***************** THUMB SLIDER ENDS *****************/
+
+/* size/color of the < and > icons */
+.nav-buttons .swiper-button-prev,
+.nav-buttons .swiper-button-next {
+  width: 2rem;
+  height: 2rem;
+  color: white;
+  border: 1px solid white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-buttons .swiper-button-prev::after,
+.nav-buttons .swiper-button-next::after {
+  font-size: 0.8rem !important;
+  line-height: 1;
+  color: white;
+}
+
+.nav-buttons .swiper-button-prev,
+.nav-buttons .swiper-button-next {
+  position: static !important;
+  margin: 0;
+}

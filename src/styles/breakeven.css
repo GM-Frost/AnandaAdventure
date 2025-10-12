@@ -1,0 +1,43 @@
+/* --------------------------------------- */
+/* Mobile phones                          */
+/* --------------------------------------- */
+/* Extra-small phones (≤ 320px) */
+@custom-media --mobile-xs (max-width: 320px);
+/* Small phones (321px – 375px) e.g. iPhone SE / 8 */
+@custom-media --mobile-sm (min-width: 321px) and (max-width: 375px);
+/* Medium phones (376px – 414px) e.g. iPhone X / 12 */
+@custom-media --mobile-md (min-width: 376px) and (max-width: 414px);
+/* Large phones (415px – 575.98px) e.g. iPhone 12 Pro Max, large Android */
+@custom-media --mobile-lg (min-width: 415px) and (max-width: 575.98px);
+
+/* --------------------------------------- */
+/* Tablets                                */
+/* --------------------------------------- */
+/* Small tablets (576px – 767.98px) e.g. iPad Mini portrait */
+@custom-media --tablet-sm (min-width: 576px) and (max-width: 767.98px);
+/* Standard tablets (768px – 834px) e.g. iPad/Air portrait */
+@custom-media --tablet-md (min-width: 768px) and (max-width: 834px);
+/* Large tablets & small laptops (835px – 1023.98px) e.g. iPad landscape */
+@custom-media --tablet-lg (min-width: 835px) and (max-width: 1023.98px);
+
+/* --------------------------------------- */
+/* Laptops / Small Desktops               */
+/* --------------------------------------- */
+/* Small laptops (992px – 1199.98px) e.g. 13″ MacBook Air CSS width */
+@custom-media --laptop-sm (min-width: 992px) and (max-width: 1199.98px);
+/* Mid-size laptops (1200px – 1439.98px) e.g. 15″ MacBook Pro CSS width */
+@custom-media --laptop-md (min-width: 1200px) and (max-width: 1439.98px);
+/* Large laptops (1440px – 1599.98px) e.g. 16″ laptops */
+@custom-media --laptop-lg (min-width: 1440px) and (max-width: 1599.98px);
+
+/* --------------------------------------- */
+/* Desktops                               */
+/* --------------------------------------- */
+/* Large desktops & TV (1600px – 2559.98px) */
+@custom-media --desktop-lg (min-width: 1600px) and (max-width: 2559.98px);
+
+/* --------------------------------------- */
+/* Ultra HD / 4K                          */
+/* --------------------------------------- */
+/* 4K and above (≥ 2560px) */
+@custom-media --desktop-4k (min-width: 2560px);
