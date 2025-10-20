@@ -4,7 +4,7 @@ import { slides } from '@/components/data/slides';
 import AboutSection from '@/components/home/section-top/AboutSection';
 import '@/assets/css/Home.css';
 import MountainDivider from '@/components/divider/MountainDivider';
-import TopDestination from '../components/home/section-top/TopDestination';
+import TopDestination from '@/components/home/top-destination/TopDestination';
 
 const Home = () => {
   return (
