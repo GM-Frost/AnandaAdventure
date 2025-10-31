@@ -34,6 +34,7 @@ import customTour2 from './top-destinations/custom-tours-2.jpg';
 import trekking1 from './top-destinations/trekking.png';
 import trekking2 from './top-destinations/trekking-2.png';
 import trekking3 from './top-destinations/trekking-3.png';
+import AroundTheWorld from './AroundTheWorld.png';
 
 export {
   beachImg,
@@ -72,4 +73,5 @@ export {
   trekking1,
   trekking2,
   trekking3,
+  AroundTheWorld,
 };

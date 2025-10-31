@@ -8,7 +8,7 @@ import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import StarIcon from '@mui/icons-material/Star';
 
-const TopDestinationSlider = () => {
+const TopDestinationSlider = ({ category }: { category: string }) => {
   // for destination carousel
   const [destinationIndex, setDestinationIndex] = useState(0);
   const [destinationItems, setDestinationItems] = useState(1);
@@ -25,6 +25,10 @@ const TopDestinationSlider = () => {
     }
   };
 
+  const filteredDestinations = topDestinationItems.filter(
+    item => item.category === category,
+  );
+
   useEffect(() => {
     updateDestinationItems();
     window.addEventListener('resize', updateDestinationItems);
@@ -33,7 +37,7 @@ const TopDestinationSlider = () => {
 
   const nextDestination = () => {
     setDestinationIndex(prevIndex =>
-      prevIndex >= topDestinationItems.length - destinationItems
+      prevIndex >= filteredDestinations.length - destinationItems
         ? 0
         : prevIndex + 1,
     );
@@ -42,15 +46,24 @@ const TopDestinationSlider = () => {
   const prevDestination = () => {
     setDestinationIndex(prevIndex =>
       prevIndex === 0
-        ? topDestinationItems.length - destinationItems
+        ? filteredDestinations.length - destinationItems
         : prevIndex - 1,
     );
   };
 
-  const visibleDestinations = topDestinationItems.slice(
-    destinationIndex,
-    destinationIndex + destinationItems,
-  );
+  let visibleDestinations;
+  if (filteredDestinations.length <= destinationItems) {
+    visibleDestinations = filteredDestinations;
+  } else {
+    visibleDestinations = filteredDestinations.slice(
+      destinationIndex,
+      destinationIndex + destinationItems,
+    );
+  }
+
+  useEffect(() => {
+    setDestinationIndex(0);
+  }, [category, destinationItems]);
 
   return (
     <section className="relative w-full max-w-6xl mx-auto px-2 sm:px-4 lg:px-8 py-4 sm:py-8">
@@ -60,7 +73,7 @@ const TopDestinationSlider = () => {
             <DestinationCard key={destination.id} destination={destination} />
           ))}
         </div>
-        {topDestinationItems.length > destinationItems && (
+        {filteredDestinations.length > destinationItems && (
           <>
             <button
               onClick={prevDestination}

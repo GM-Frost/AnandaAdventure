@@ -5,6 +5,7 @@ import AboutSection from '@/components/home/section-top/AboutSection';
 import '@/assets/css/Home.css';
 import MountainDivider from '@/components/divider/MountainDivider';
 import TopDestination from '@/components/home/top-destination/TopDestination';
+import ActivitySection from '@/components/home/activity-section/ActivitySection';
 
 const Home = () => {
   return (
@@ -15,6 +16,7 @@ const Home = () => {
       </div>
       <AboutSection />
       <TopDestination />
+      <ActivitySection />
     </>
   );
 };

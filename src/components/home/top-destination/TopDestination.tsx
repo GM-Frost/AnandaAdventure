@@ -2,6 +2,8 @@ import { useEffect, useRef, useState } from 'react';
 import { topDestinationTabs } from '@/components/data/topDestinations';
 import { doodleImg2 } from '@/assets/images/images';
 import TopDestinationSlider from './TopDestinationSlider';
+import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+import DoubleArrowIcon from '@mui/icons-material/DoubleArrow';
 
 const TopDestination = () => {
   const [currentTab, setCurrentTab] = useState(0);
@@ -10,6 +12,7 @@ const TopDestination = () => {
   const [pillStyle, setPillStyle] = useState({ left: 0, width: 0 });
 
   const tabs = topDestinationTabs;
+  const [isHovered, setIsHovered] = useState(false);
 
   useEffect(() => {
     if (tabRefs.current[currentTab]) {
@@ -22,7 +25,7 @@ const TopDestination = () => {
   }, [currentTab, tabs.length]);
 
   return (
-    <div className="relative mx-auto w-full h-[800px]">
+    <div className="relative mx-auto w-full min-h-[700px] max-h-max pb-15">
       {/* Background */}
       <div
         className="absolute inset-0 bg-cover bg-center"
@@ -30,9 +33,8 @@ const TopDestination = () => {
       >
         <div className="absolute inset-0 bg-orange-50/90" />
       </div>
-
       {/* Tab bar Title*/}
-      <div className="absolute left-0 right-0 flex flex-col items-center z-10">
+      <div className="relative flex flex-col items-center z-10">
         <div className="top-destination-txt flex flex-col items-center text-center w-full px-4 py-5">
           <h2 className="text-primary font-subheading text-xl sm:text-xl md:text-2xl lg:text-3xl py-2 sm:py-3 md:py-4">
             Top Destinations
@@ -41,11 +43,16 @@ const TopDestination = () => {
             Our Handpicked <span className="text-secondary">Tour</span> Packages
           </span>
         </div>
-
         {/* Tabs */}
         <div
-          className="w-full max-w-[90vw] md:min-w-[90vw] flex items-center overflow-x-auto scrollbar-hide rounded-full bg-white/90 shadow-lg
-            mt-10 px-2 gap-2 sm:w-[80%] sm:justify-between sm:gap-0 sm:overflow-x-visible relative"
+          className=" w-full flex items-center
+    overflow-x-auto
+    scrollbar-hide
+    rounded-full bg-white/90 shadow-lg
+    mt-10 px-2 gap-2
+    sm:w-[95%] sm:mx-auto
+    sm:justify-between
+    relative"
           ref={scrollRef}
         >
           <span
@@ -76,7 +83,7 @@ const TopDestination = () => {
           ))}
         </div>
         {/* Pill indicator (desktop only) */}
-        <div className="relative w-full sm:w-[80%] mt-[-40px] pointer-events-none hidden sm:block">
+        <div className="relative w-full sm:w-[80%] mt-[-20px] pointer-events-none hidden sm:block">
           <div
             style={{
               width: `calc(100% / ${tabs.length})`,
@@ -84,11 +91,34 @@ const TopDestination = () => {
             }}
           />
         </div>
-
         {/* Tab Content */}
-        <div className="w-[90vw] sm:w-[80%] max-w-7xl px-4 sm:px-8 py-6 rounded-xl mt-18 overflow-y-auto">
-          <TopDestinationSlider />
+        <div className="w-[90vw] sm:w-[80%] max-w-7xl px-4 sm:px-8 py-6 rounded-xl overflow-y-auto">
+          <TopDestinationSlider category={tabs[currentTab].label} />
         </div>
+        {/* View Tours Button */}
+        <button
+          className="group flex items-center gap-1 bg-primary text-white px-5 py-2 rounded-md text-xs sm:text-sm hover:bg-primary-dark hover:cursor-pointer transition-colors font-semibold overflow-hidden"
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
+          onClick={() => {
+            /* Add your navigation logic here */
+          }}
+        >
+          <span className="group-hover:translate-x-1 transition-transform duration-300 uppercase">
+            View All Tour
+          </span>
+          <span
+            className={`transform transition-all duration-300 ${
+              isHovered ? 'translate-x-1' : ''
+            }`}
+          >
+            {isHovered ? (
+              <DoubleArrowIcon className="w-4 h-4" />
+            ) : (
+              <ChevronRightIcon className="w-4 h-4" />
+            )}
+          </span>
+        </button>
       </div>
     </div>
   );
