@@ -45,7 +45,7 @@ const TopDestination = () => {
         </div>
         {/* Tabs */}
         <div
-          className=" w-full flex items-center
+          className=" w-full max-w-7xl flex items-center
     overflow-x-auto
     scrollbar-hide
     rounded-full bg-white/90 shadow-lg
@@ -75,6 +75,7 @@ const TopDestination = () => {
           : 'text-gray-800 hover:text-primary-light hover:cursor-pointer bg-transparent'
       }
       rounded-full
+
     `}
               onClick={() => setCurrentTab(index)}
             >

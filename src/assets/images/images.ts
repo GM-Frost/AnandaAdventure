@@ -35,7 +35,7 @@ import trekking1 from './top-destinations/trekking.png';
 import trekking2 from './top-destinations/trekking-2.png';
 import trekking3 from './top-destinations/trekking-3.png';
 import AroundTheWorld from './AroundTheWorld.png';
-
+import ActivityBanner from './Ananda_activity_banner.png';
 export {
   beachImg,
   bhutanImg,
@@ -74,4 +74,5 @@ export {
   trekking2,
   trekking3,
   AroundTheWorld,
+  ActivityBanner,
 };

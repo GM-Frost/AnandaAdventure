@@ -11,7 +11,7 @@ import MapOutlinedIcon from '@mui/icons-material/MapOutlined';
 import SpaOutlinedIcon from '@mui/icons-material/SpaOutlined';
 import CallMadeOutlinedIcon from '@mui/icons-material/CallMadeOutlined';
 import BookmarkAddOutlinedIcon from '@mui/icons-material/BookmarkAddOutlined';
-import { AroundTheWorld } from '../../../assets/images/images';
+import { ActivityBanner, AroundTheWorld } from '../../../assets/images/images';
 
 const activities = [
   { icon: <CabinIcon fontSize="large" />, label: 'Cabin/Camping' },
@@ -61,7 +61,16 @@ const ActivitySection = () => {
             ))}
           </div>
           <div className="relative w-full flex justify-center mt-10">
-            <div className="relative bg-primary-dark w-full max-w-6xl rounded-xl flex flex-col md:flex-row items-center md:items-stretch px-4 md:pl-55 py-8 text-white shadow-xl overflow-visible min-h-[360px]">
+            <div
+              className="relative bg-primary-dark w-full max-w-6xl rounded-xl flex flex-col md:flex-row items-center md:items-stretch px-4 md:pl-55 py-8 text-white shadow-xl overflow-visible min-h-[360px]"
+              style={{
+                backgroundImage: `url(${ActivityBanner})`,
+                objectFit: 'cover',
+                backgroundRepeat: 'no-repeat',
+                backgroundPosition: 'center',
+                backgroundSize: 'cover',
+              }}
+            >
               <img
                 src={AroundTheWorld}
                 alt="Around-the-World"
