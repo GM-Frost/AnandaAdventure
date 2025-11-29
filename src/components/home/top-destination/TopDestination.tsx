@@ -2,8 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { topDestinationTabs } from '@/components/data/topDestinations';
 import { doodleImg2 } from '@/assets/images/images';
 import TopDestinationSlider from './TopDestinationSlider';
-import ChevronRightIcon from '@mui/icons-material/ChevronRight';
-import DoubleArrowIcon from '@mui/icons-material/DoubleArrow';
+import { ChevronRightIcon, DoubleArrowIcon } from '@/components/icons';
 
 const TopDestination = () => {
   const [currentTab, setCurrentTab] = useState(0);

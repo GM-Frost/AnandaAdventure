@@ -17,6 +17,9 @@ body {
   --color-secondary-light: #fb923c; /* Lighter orange */
   --color-secondary-dark: #c2410c; /* Deeper orange */
 
+  --color-accent: #707070; /* Medium gray for text */
+  --color-background-light: #f3f4f6; /* Light gray background */
+
   --font-extras: 'kalam', cursive;
   --font-display: 'Aclonica', sans-serif;
   --font-heading: 'Merienda', cursive;

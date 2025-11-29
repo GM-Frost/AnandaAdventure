@@ -1,15 +1,13 @@
 import React from 'react';
-import LandscapeIcon from '@mui/icons-material/Landscape';
 import { Button } from '@mui/material';
 
-import ActivityItem from '@/components/home/activity-section/ActivityItems';
-import CabinIcon from '@mui/icons-material/Cabin';
-import HikingIcon from '@mui/icons-material/Hiking';
-import VolunteerActivismIcon from '@mui/icons-material/VolunteerActivism';
-import KayakingIcon from '@mui/icons-material/Kayaking';
-import ParaglidingIcon from '@mui/icons-material/Paragliding';
-import TwoWheelerIcon from '@mui/icons-material/TwoWheeler';
-import { count } from 'console';
+import {
+  HikingIcon,
+  VolunteerActivismIcon,
+  TwoWheelerIcon,
+  LandscapeIcon,
+} from '@components/icons';
+
 import { TourGuide } from '@/assets/logo/images';
 
 const achievements = [
@@ -87,8 +85,6 @@ export const AchievementBanner = () => {
           ))}
         </div>
       </div>
-
-      <div className="h-24 md:h-28"></div>
     </div>
   );
 };

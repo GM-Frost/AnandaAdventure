@@ -1,0 +1,17 @@
+export { default as ArrowRightAltIcon } from '@mui/icons-material/ArrowRightAlt';
+export { default as KeyboardBackspaceIcon } from '@mui/icons-material/KeyboardBackspace';
+export { default as HikingIcon } from '@mui/icons-material/Hiking';
+export { default as VolunteerActivismIcon } from '@mui/icons-material/VolunteerActivism';
+export { default as TwoWheelerIcon } from '@mui/icons-material/TwoWheeler';
+export { default as LandscapeIcon } from '@mui/icons-material/Landscape';
+export { default as BookmarkAddIcon } from '@mui/icons-material/BookmarkAdd';
+export { default as CabinIcon } from '@mui/icons-material/Cabin';
+export { default as KayakingIcon } from '@mui/icons-material/Kayaking';
+export { default as ParaglidingIcon } from '@mui/icons-material/Paragliding';
+export { default as MapOutlinedIcon } from '@mui/icons-material/MapOutlined';
+export { default as SpaOutlinedIcon } from '@mui/icons-material/SpaOutlined';
+export { default as CallMadeOutlinedIcon } from '@mui/icons-material/CallMadeOutlined';
+export { default as ChevronLeftIcon } from '@mui/icons-material/ChevronLeft';
+export { default as ChevronRightIcon } from '@mui/icons-material/ChevronRight';
+export { default as DoubleArrowIcon } from '@mui/icons-material/DoubleArrow';
+export { default as StarIcon } from '@mui/icons-material/Star';

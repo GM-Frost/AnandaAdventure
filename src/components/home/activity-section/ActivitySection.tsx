@@ -1,16 +1,16 @@
 import React from 'react';
 
 import ActivityItem from '@/components/home/activity-section/ActivityItems';
-import CabinIcon from '@mui/icons-material/Cabin';
-import HikingIcon from '@mui/icons-material/Hiking';
-import KayakingIcon from '@mui/icons-material/Kayaking';
-import ParaglidingIcon from '@mui/icons-material/Paragliding';
-import TwoWheelerIcon from '@mui/icons-material/TwoWheeler';
+import {
+  CabinIcon,
+  KayakingIcon,
+  ParaglidingIcon,
+  MapOutlinedIcon,
+  SpaOutlinedIcon,
+  CallMadeOutlinedIcon,
+  TwoWheelerIcon,
+} from '@/components/icons';
 import { RockClimb, ZipLine } from '@/assets/logo/images';
-import MapOutlinedIcon from '@mui/icons-material/MapOutlined';
-import SpaOutlinedIcon from '@mui/icons-material/SpaOutlined';
-import CallMadeOutlinedIcon from '@mui/icons-material/CallMadeOutlined';
-import BookmarkAddOutlinedIcon from '@mui/icons-material/BookmarkAddOutlined';
 import { ActivityBanner, AroundTheWorld } from '@/assets/images/images';
 
 const activities = [

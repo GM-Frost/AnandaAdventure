@@ -7,6 +7,7 @@ import MountainDivider from '@/components/divider/MountainDivider';
 import TopDestination from '@/components/home/top-destination/TopDestination';
 import ActivitySection from '@/components/home/activity-section/ActivitySection';
 import AchievementBanner from '@/components/home/achievement-banner/AchievementBanner';
+import ExploreSection from '@/components/home/explore-section/ExploreSection';
 
 const Home = () => {
   return (
@@ -18,7 +19,8 @@ const Home = () => {
       <AboutSection />
       <TopDestination />
       <ActivitySection />
-      <AchievementBanner/>
+      <AchievementBanner />
+      <ExploreSection />
     </>
   );
 };

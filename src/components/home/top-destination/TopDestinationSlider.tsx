@@ -3,10 +3,11 @@ import {
   destinations,
   topDestinationItems,
 } from '@/components/data/topDestinations';
-
-import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
-import ChevronRightIcon from '@mui/icons-material/ChevronRight';
-import StarIcon from '@mui/icons-material/Star';
+import {
+  ChevronLeftIcon,
+  ChevronRightIcon,
+  StarIcon,
+} from '@/components/icons';
 
 const TopDestinationSlider = ({ category }: { category: string }) => {
   // for destination carousel
