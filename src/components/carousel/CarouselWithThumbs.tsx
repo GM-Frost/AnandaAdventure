@@ -14,7 +14,7 @@ import { AnimatePresence, motion, useInView, Variants } from 'framer-motion';
 import { tilakImg } from '@/assets/images/images';
 import { Button, IconButton } from '@mui/material';
 import 'swiper/css/effect-fade';
-import BookmarkAddIcon from '@mui/icons-material/BookmarkAdd';
+import { BookmarkAddIcon } from '@components/icons';
 
 type Props = {
   slides: Slide[];

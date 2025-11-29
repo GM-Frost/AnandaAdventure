@@ -1,6 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Aclonica&family=Kalam:wght@300;400;700&family=Merienda:wght@300..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Yatra+One&display=swap');
 
 @import 'tailwindcss';
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Nunito', sans-serif;
+}
 
 @theme {
   --color-primary: #b91c1c; /* Deep red (left card) */
@@ -10,6 +16,9 @@
   --color-secondary: #f97316; /* Warm orange (right card) */
   --color-secondary-light: #fb923c; /* Lighter orange */
   --color-secondary-dark: #c2410c; /* Deeper orange */
+
+  --color-accent: #707070; /* Medium gray for text */
+  --color-background-light: #f3f4f6; /* Light gray background */
 
   --font-extras: 'kalam', cursive;
   --font-display: 'Aclonica', sans-serif;
@@ -21,9 +30,7 @@
 h1 {
   font-family: 'Merienda', cursive;
 }
-body {
-  font-family: 'Nunito', sans-serif;
-}
+
 button {
   font-family: 'kalam', cursive;
 }

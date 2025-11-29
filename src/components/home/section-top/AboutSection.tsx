@@ -18,7 +18,7 @@ const AboutSection = () => {
             <img
               src={aboutSectionImg}
               loading="lazy"
-              className="w-full max-w-[420px] sm:max-w-[420px] md:max-w-[480px] lg:max-w-[520px] aspect-square object-cover"
+              className="w-full max-w-[320px] sm:max-w-[320px] md:max-w-[380px] lg:max-w-[420px] aspect-square object-cover"
             />
           </div>
           <div className="order-2 lg:order-2 p-4">
@@ -111,9 +111,9 @@ const AboutSection = () => {
               </div>
             </div>
             {/* FOOTER TAGLINE */}
-            <div className="mt-8 sm:mt-10 flex items-center gap-3 text-primary-dark">
+            <div className="mt-8 sm:mt-8 flex items-center gap-3 text-primary-dark">
               <i
-                className="fi fi-sr-map-location-track text-3xl sm:text-4xl"
+                className="fi fi-sr-map-location-track text-3xl sm:text-sm"
                 aria-hidden="true"
               ></i>
               <p className="text-sm sm:text-base">

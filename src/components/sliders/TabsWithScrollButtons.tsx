@@ -1,6 +1,5 @@
 import { useRef, useState, useEffect, useLayoutEffect } from 'react';
-import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
-import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+import { ChevronLeftIcon, ChevronRightIcon } from '@components/icons';
 
 type Tab = {
   label: string;
