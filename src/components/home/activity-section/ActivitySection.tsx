@@ -6,12 +6,12 @@ import HikingIcon from '@mui/icons-material/Hiking';
 import KayakingIcon from '@mui/icons-material/Kayaking';
 import ParaglidingIcon from '@mui/icons-material/Paragliding';
 import TwoWheelerIcon from '@mui/icons-material/TwoWheeler';
-import { RockClimb, ZipLine } from '../../../assets/logo/images';
+import { RockClimb, ZipLine } from '@/assets/logo/images';
 import MapOutlinedIcon from '@mui/icons-material/MapOutlined';
 import SpaOutlinedIcon from '@mui/icons-material/SpaOutlined';
 import CallMadeOutlinedIcon from '@mui/icons-material/CallMadeOutlined';
 import BookmarkAddOutlinedIcon from '@mui/icons-material/BookmarkAddOutlined';
-import { ActivityBanner, AroundTheWorld } from '../../../assets/images/images';
+import { ActivityBanner, AroundTheWorld } from '@/assets/images/images';
 
 const activities = [
   { icon: <CabinIcon fontSize="large" />, label: 'Cabin/Camping' },
@@ -48,7 +48,7 @@ const ActivitySection = () => {
             md:grid-cols-3
             lg:grid-cols-4
             xl:grid-cols-6
-            max-w-6xl
+            max-w-5xl
             mx-auto
           "
           >

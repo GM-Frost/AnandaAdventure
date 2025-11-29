@@ -1,6 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Aclonica&family=Kalam:wght@300;400;700&family=Merienda:wght@300..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Yatra+One&display=swap');
 
 @import 'tailwindcss';
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Nunito', sans-serif;
+}
 
 @theme {
   --color-primary: #b91c1c; /* Deep red (left card) */
@@ -21,9 +27,7 @@
 h1 {
   font-family: 'Merienda', cursive;
 }
-body {
-  font-family: 'Nunito', sans-serif;
-}
+
 button {
   font-family: 'kalam', cursive;
 }
