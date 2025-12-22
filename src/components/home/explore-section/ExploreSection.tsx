@@ -141,8 +141,18 @@ const ExploreSection = () => {
               </span>
 
               <div className="absolute left-1/2 -bottom-12 -translate-x-1/2 w-[85%]">
-                <div className="bg-primary text-white px-4 py-2 rounded-t-xl text-sm font-heading flex items-center justify-between">
-                  {dest.name}
+                <div className="flex h-8 w-full rounded-t-xl overflow-hidden">
+                  <div className="flex-1 bg-secondary-dark text-white flex items-center pl-4 pr-2 font-heading text-sm h-full whitespace-nowrap overflow-hidden text-ellipsis">
+                    {dest.name}
+                  </div>
+
+                  <div
+                    className="w-16 h-full -ml-6 flex-shrink-0"
+                    style={{
+                      background: 'white',
+                      clipPath: 'polygon(35% 0, 100% 0, 100% 100%, 0 100%)',
+                    }}
+                  />
                 </div>
 
                 <div className="bg-white px-4 py-3 rounded-b-xl shadow-md flex items-center justify-between">
