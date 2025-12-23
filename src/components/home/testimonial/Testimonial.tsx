@@ -62,11 +62,11 @@ const Testimonial = () => {
   return (
     <section className="bg-[#fff2de] py-8 sm:py-10 md:py-12 px-4 sm:px-6">
       <div className="max-w-7xl mx-auto flex flex-col items-center">
-        <h2 className="text-base sm:text-lg md:text-xl font-semibold text-secondary-dark text-center mb-1 sm:mb-2 md:mb-3">
+        <h2 className="text-sm sm:text-lg md:text-md font-semibold text-secondary-dark text-center mb-1 sm:mb-2 md:mb-3 uppercase tracking-wider">
           Testimonial
         </h2>
 
-        <h1 className="text-xl sm:text-3xl md:text-4xl font-bold text-center mb-6 md:mb-8 capitalize max-w-3xl px-2">
+        <h1 className="text-xl sm:text-3xl md:text-4xl font-bold text-center mb-6 md:mb-8 capitalize max-w-3xl px-2  text-shadow-md/10">
           Voices of our happy{' '}
           <span className="text-secondary-dark italic">travelers</span>
         </h1>

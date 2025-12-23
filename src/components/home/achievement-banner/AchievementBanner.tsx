@@ -47,11 +47,11 @@ export const AchievementBanner = () => {
           <LandscapeIcon className="text-5xl md:text-6xl" />
 
           <div className="flex flex-col gap-3">
-            <h2 className="text-xl sm:text-2xl md:text-3xl font-heading leading-snug">
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-heading leading-snug text-shadow-md/90">
               I'm Ready to Explore and <br /> Enjoy The Beauty of Nature.
             </h2>
 
-            <p className="text-xs sm:text-sm md:text-base max-w-xs">
+            <p className="text-xs sm:text-sm md:text-base max-w-xs text-shadow-md/90">
               Decide on the destination that offers the type of experience
               you're seeking
             </p>
@@ -61,7 +61,7 @@ export const AchievementBanner = () => {
         <Button
           variant="contained"
           className="bg-white text-primary-dark font-bold rounded-xl
-            shadow-md shadow-black/20 px-6 py-3 w-50 sm:w-auto"
+            shadow-md shadow-black/20 px-6 py-3 w-50 sm:w-auto text-shadow-md/10"
         >
           Book Now
         </Button>
@@ -72,7 +72,7 @@ export const AchievementBanner = () => {
           {achievements.map((item, index) => (
             <div
               key={index}
-              className="bg-white shadow-xl rounded-2xl p-1 sm:p-3 flex flex-col items-center border border-gray-200 border-dotted"
+              className="bg-white shadow-xl text-shadow-md/10 rounded-2xl p-1 sm:p-3 flex flex-col items-center border border-gray-200 border-dotted"
             >
               <span className="text-primary-dark text-lg sm:text-4xl">
                 {item.icon}

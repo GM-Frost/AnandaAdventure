@@ -9,7 +9,9 @@ import {
   TopDestination,
   AchievementBanner,
   AboutSection,
+  BlogSection,
 } from '@/components/home';
+import Footer from '@/components/Footer/Footer';
 
 const Home = () => {
   return (
@@ -24,6 +26,8 @@ const Home = () => {
       <AchievementBanner />
       <ExploreSection />
       <Testimonial />
+      <BlogSection />
+      <Footer />
     </>
   );
 };

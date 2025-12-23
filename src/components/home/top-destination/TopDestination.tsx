@@ -35,10 +35,10 @@ const TopDestination = () => {
       {/* Tab bar Title*/}
       <div className="relative flex flex-col items-center z-10">
         <div className="top-destination-txt flex flex-col items-center text-center w-full px-4 py-5">
-          <h2 className="text-primary font-subheading text-xl sm:text-xl md:text-2xl lg:text-3xl py-2 sm:py-3 md:py-4">
+          <h2 className="text-primary font-subheading text-xl sm:text-xl md:text-2xl lg:text-3xl py-2 sm:py-3 md:py-4 text-shadow-md/10">
             Top Destinations
           </h2>
-          <span className="font-heading font-bold text-lg sm:text-xl md:text-2xl lg:text-3xl leading-tight">
+          <span className="font-heading font-bold text-lg sm:text-xl md:text-2xl lg:text-3xl leading-tight text-shadow-md/10">
             Our Handpicked <span className="text-secondary">Tour</span> Packages
           </span>
         </div>

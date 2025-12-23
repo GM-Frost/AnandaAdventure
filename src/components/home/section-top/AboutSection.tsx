@@ -1,9 +1,6 @@
 import {
-  aboutImg,
-  aboutImg2,
   aboutSectionImg,
   blackBorderImg,
-  blackTilakImg,
   ceoImg,
   logoImg,
 } from '@/assets/images/images';
@@ -18,12 +15,12 @@ const AboutSection = () => {
             <img
               src={aboutSectionImg}
               loading="lazy"
-              className="w-full max-w-[320px] sm:max-w-[320px] md:max-w-[380px] lg:max-w-[420px] aspect-square object-cover"
+              className="w-full hidden sm:block sm:max-w-[320px] md:max-w-[480px] lg:max-w-[520px] object-cover"
             />
           </div>
           <div className="order-2 lg:order-2 p-4">
             <div className="flex flex-col items-center text-center">
-              <h2 className="font-heading text-4xl sm:text-5xl lg:text-4xl">
+              <h2 className="font-heading text-4xl sm:text-5xl lg:text-4xl text-shadow-md/10">
                 About
               </h2>
               <img
@@ -34,7 +31,7 @@ const AboutSection = () => {
               />
             </div>
             <div className="mt-6 sm:mt-7">
-              <h3 className="text-xl sm:text-2xl lg:text-3xl font-extras leading-snug">
+              <h3 className="text-xl sm:text-2xl lg:text-3xl font-extras leading-snug text-shadow-md/10">
                 Hike the <span className="text-secondary">Mountains,</span>
                 <br className="hidden sm:block" /> without the hassle
               </h3>
@@ -56,7 +53,7 @@ const AboutSection = () => {
                 <h4 className="font-extras font-bold text-base sm:text-lg">
                   Trusted Travel Guide
                 </h4>
-                <p className="font-body text-sm sm:text-base text-gray-700">
+                <p className="font-body text-sm sm:text-base text-gray-700 ">
                   Our experienced guides ensure a safe and enriching journey.
                 </p>
               </div>

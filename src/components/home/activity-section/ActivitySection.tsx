@@ -50,6 +50,7 @@ const ActivitySection = () => {
             xl:grid-cols-6
             max-w-5xl
             mx-auto
+
           "
           >
             {activities.map((activity, index) => (
@@ -95,20 +96,20 @@ const ActivitySection = () => {
                 }}
               />
               <div className="flex-1 flex flex-col justify-center text-center md:text-left items-center md:items-start z-20">
-                <h1 className="font-extrabold text-lg md:text-2xl mb-4 md:mb-12">
+                <h1 className="font-extrabold text-lg md:text-2xl mb-4 md:mb-12 text-shadow-md/20">
                   Live Your Adventure with Ananda Adventure &amp; Explore your
                   Dream Destinations.
                 </h1>
                 <div className="flex flex-col md:flex-row gap-4 md:gap-8 w-full md:justify-start mb-4">
                   <div className="flex items-center justify-center">
                     <MapOutlinedIcon fontSize="medium" />
-                    <span className="ml-2 font-light">
+                    <span className="ml-2 font-light text-shadow-md/20">
                       Experience the True Adventure
                     </span>
                   </div>
                   <div className="flex items-center justify-center">
                     <SpaOutlinedIcon fontSize="medium" />
-                    <span className="ml-2 font-light">
+                    <span className="ml-2 font-light text-shadow-md/20">
                       Comfort and Peace of Mind
                     </span>
                   </div>
@@ -118,7 +119,7 @@ const ActivitySection = () => {
                   <button className="bg-gray-700/30 rounded-full p-5 flex font-bold hover:bg-gray-800/50 transition-colors duration-300 cursor-pointer text-white">
                     <CallMadeOutlinedIcon />
                   </button>
-                  <span className="text-lg">Book Now!</span>
+                  <span className="text-lg text-shadow-md/20">Book Now!</span>
                 </div>
               </div>
             </div>

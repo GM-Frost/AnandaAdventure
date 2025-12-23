@@ -91,7 +91,7 @@ const ExploreSection = () => {
         </h2>
       </div>
       <div className="flex items-center justify-between mb-6">
-        <h2 className="text-3xl font-extras text-center flex-1">
+        <h2 className="text-3xl font-extras text-center flex-1 text-shadow-md/10">
           Top{' '}
           <span className="text-secondary-dark font-subheading">
             Destinations
@@ -132,7 +132,7 @@ const ExploreSection = () => {
               <img
                 src={dest.img}
                 alt={dest.name}
-                className="h-48 w-full object-cover"
+                className="h-47 w-full object-cover"
               />
 
               {/* TOURS BADGE */}
