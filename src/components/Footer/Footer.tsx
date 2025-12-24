@@ -14,37 +14,42 @@ import { NepalGovt, Nma, Ntb, Taan } from '@/assets/logo/images';
 const Footer = () => {
   return (
     <footer className="bg-neutral-900 text-neutral-100 pt-10 pb-4 px-4 md:px-10 border-t border-neutral-800">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10 pb-8">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-12 gap-y-8 pb-8">
+        {/* Logo & Contact */}
         <div className="flex flex-col">
-          <div className="flex items-center gap-2 mb-3">
-            {/* Replace with your SVG or Image logo */}
+          <div className="flex items-center gap-3 mb-3">
             <img
               src={logoImg}
               alt="Trekvista Logo"
               className="w-10 h-10 object-contain"
             />
-
-            <span className="text-2xl font-extras text-shadow-lg/90">
+            <span className="text-2xl font-extras tracking-tight text-shadow-lg/80">
               Ananda Adventures
             </span>
           </div>
-          <div>
-            <p className="text-sm text-neutral-400 mb-5 text-shadow-lg/90">
-              Pack your bags for the ultimate adventure! Explore the world'’'s
-              hidden gems, enjoy exhilarating experiences, and build memories
-              that last a lifetime.
-            </p>
-          </div>
-          <div className="flex flex-col text-shadow-lg/90">
-            <div className="flex items-center gap-2">
+          <p className="text-sm text-neutral-400 mb-5 text-shadow-lg/80">
+            Pack your bags for the ultimate adventure! Explore the world’s
+            hidden gems, enjoy exhilarating experiences, and build memories that
+            last a lifetime.
+          </p>
+          <div className="flex flex-col gap-2">
+            <div className="flex items-center gap-2 text-shadow-lg/90">
               <MarkEmailReadIcon className="w-4 text-secondary" />
-              <span className="text-sm text-neutral-400">
+              <a
+                href="mailto:Adventureananda@gmail.com"
+                className="text-sm text-neutral-400 hover:text-secondary transition"
+              >
                 Adventureananda@gmail.com
-              </span>
+              </a>
             </div>
             <div className="flex items-center gap-2">
               <PhoneInTalkIcon className="w-4 text-secondary" />
-              <span className="text-sm text-neutral-400">+977-1-4583408</span>
+              <a
+                href="tel:+97714583408"
+                className="text-sm text-neutral-400 hover:text-secondary transition"
+              >
+                +977-1-4583408
+              </a>
             </div>
             <div className="flex items-center gap-2">
               <PinDropIcon className="w-4 text-secondary" />
@@ -54,100 +59,92 @@ const Footer = () => {
             </div>
           </div>
         </div>
-        {/* Services Sections */}
+        {/* Services */}
         <div className="flex flex-col">
-          <h3 className="text-lg font-subheading mb-4 text-shadow-lg/90">
+          <h3 className="text-lg font-subheading mb-4 tracking-wide text-shadow-lg/90">
             Services
           </h3>
-          <ul className="space-y-2 text-sm text-neutral-400 font-subheading text-shadow-lg/90">
-            <li>About Us</li>
-            <li>FAQ</li>
-            <li>Our Team</li>
-            <li>Blog</li>
-            <li>Get in Touch</li>
+          <ul className="space-y-2 text-sm text-neutral-400 text-shadow-lg/90">
+            <li>
+              <a href="/about" className="hover:text-secondary transition">
+                About Us
+              </a>
+            </li>
+            <li>
+              <a href="/faq" className="hover:text-secondary transition">
+                FAQ
+              </a>
+            </li>
+            <li>
+              <a href="/team" className="hover:text-secondary transition">
+                Our Team
+              </a>
+            </li>
+            <li>
+              <a href="/blog" className="hover:text-secondary transition">
+                Blog
+              </a>
+            </li>
+            <li>
+              <a href="/contact" className="hover:text-secondary transition">
+                Get in Touch
+              </a>
+            </li>
           </ul>
         </div>
-        {/* Affiliations */}
+        {/* Gallery & Affiliations */}
         <div className="flex flex-col">
-          <h3 className="text-lg font-subheading mb-4 text-shadow-lg/90">
+          <h3 className="text-lg font-subheading mb-4 tracking-wide text-shadow-lg/80">
             Gallery
           </h3>
-          <div className="grid grid-cols-3 gap-1">
-            <img
-              src="https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-              alt="Gallery Image 01"
-              className="w-full h-auto object-cover rounded"
-            />
-            <img
-              src="https://images.unsplash.com/photo-1526772662000-3f88f10405ff?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-              alt="Gallery Image 02"
-              className="w-full h-auto object-cover rounded"
-            />
-            <img
-              src="https://images.unsplash.com/photo-1517934274943-d1749ff2d7a8?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-              alt="Gallery Image 03"
-              className="w-full h-auto object-cover rounded"
-            />
-            <img
-              src="https://images.unsplash.com/photo-1611154046036-cd91e50978be?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-              alt="Gallery Image 04"
-              className="w-full h-auto object-cover rounded"
-            />
-            <img
-              src="https://plus.unsplash.com/premium_photo-1676982101887-49bb12d8a104?q=80&w=1169&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-              alt="Gallery Image 05"
-              className="w-full h-auto object-cover rounded"
-            />
-            <img
-              src="https://images.unsplash.com/photo-1566353820666-883ec100f41b?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-              alt="Gallery Image 06"
-              className="w-full h-auto object-cover rounded"
-            />
+          <div className="grid grid-cols-3 gap-1 mb-4">
+            {/* You can use aspect-square for perfect squares */}
+            {[
+              'https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=1170&auto=format&fit=crop',
+              'https://images.unsplash.com/photo-1526772662000-3f88f10405ff?q=80&w=1074&auto=format&fit=crop',
+              'https://images.unsplash.com/photo-1517934274943-d1749ff2d7a8?q=80&w=1170&auto=format&fit=crop',
+              'https://images.unsplash.com/photo-1611154046036-cd91e50978be?q=80&w=1170&auto=format&fit=crop',
+              'https://plus.unsplash.com/premium_photo-1676982101887-49bb12d8a104?q=80&w=1169&auto=format&fit=crop',
+              'https://images.unsplash.com/photo-1566353820666-883ec100f41b?q=80&w=1170&auto=format&fit=crop',
+            ].map((src, idx) => (
+              <img
+                key={idx}
+                src={src}
+                alt={`Gallery ${idx + 1}`}
+                className="w-full aspect-square object-cover rounded"
+                loading="lazy"
+              />
+            ))}
           </div>
-          <h3 className="text-lg font-subheading mb-4 mt-4 text-shadow-lg/90">
+          <h3 className="text-lg font-subheading mb-2 mt-4 tracking-wide text-shadow-lg/90">
             Affiliated
           </h3>
           <div className="flex flex-wrap gap-2">
-            <img
-              src={Nma}
-              alt="Affiliation 1"
-              className="w-10 h-10 object-contain "
-              loading="lazy"
-            />
-            <img
-              alt="Affiliation 2"
-              src={Ntb}
-              className="w-10 h-10 object-contain"
-              loading="lazy"
-            />
-            <img
-              src={NepalGovt}
-              alt="Affiliation 3"
-              className="w-10 h-10 object-contain"
-              loading="lazy"
-            />
-            <img
-              src={Taan}
-              alt="Affiliation 4"
-              className="w-10 h-10 object-contain"
-              loading="lazy"
-            />
+            {[
+              { src: Nma, alt: 'NMA' },
+              { src: Ntb, alt: 'NTB' },
+              { src: NepalGovt, alt: 'Nepal Govt' },
+              { src: Taan, alt: 'TAAN' },
+            ].map(({ src, alt }) => (
+              <img
+                key={alt}
+                src={src}
+                alt={alt}
+                className="w-10 h-10 object-contain"
+                loading="lazy"
+              />
+            ))}
           </div>
         </div>
-        <div>
-          <h3 className="text-lg font-subheading mb-4 text-shadow-lg/90">
-            News Letter
+        {/* Newsletter & Social */}
+        <div className="flex flex-col">
+          <h3 className="text-lg font-subheading mb-4 tracking-wide text-shadow-lg/90">
+            Newsletter
           </h3>
           <p className="text-sm text-neutral-400 mb-4">
             Subscribe to our newsletter to get the latest updates and offers.
           </p>
-          <form
-            className="relative w-full"
-            onSubmit={e => {
-              e.preventDefault();
-              /* handle submit */
-            }}
-          >
+          <form className="relative w-full" onSubmit={e => e.preventDefault()}>
             <input
               type="email"
               name="email"
@@ -158,30 +155,50 @@ const Footer = () => {
             <button
               type="submit"
               aria-label="Subscribe"
-              className="absolute right-1 top-1/2 transform -translate-y-1/2 h-8 w-8 bg-secondary-dark text-white rounded-2xl hover:bg-secondary-light transition-colors duration-300 flex cursor-pointer items-center justify-center"
+              className="absolute right-1 top-1/2 -translate-y-1/2 h-8 w-8 bg-secondary-dark text-white rounded-full hover:bg-secondary-light transition-colors flex items-center justify-center"
             >
               <img
                 src={paperPlaneImg}
-                alt=""
+                alt="Send"
                 className="w-4 h-4 object-contain"
-                aria-hidden="true"
               />
             </button>
           </form>
-          <div className="md:col-span-4 flex flex-col justify-center mt-4 mb-2">
-            <h3 className="font-subheading text-sm text-white text-center text-shadow-lg/90">
-              Follow us on social media for more adventure inspiration!
+          <div className="flex flex-col items-center mt-5">
+            <h3 className="font-semibold text-sm text-white mb-2 text-shadow-lg/90">
+              Follow us on social media
             </h3>
-            <div className="flex items-center justify-center mt-2">
-              {/* Social Media Icons can be added here */}
-              <FacebookIcon className="mx-1 w-8 h-8 cursor-pointer text-blue-500 hover:text-secondary-light" />
-              <WhatsAppIcon className="mx-1 w-8 h-8 cursor-pointer text-green-500 hover:text-secondary-light" />
-              <InstagramIcon className="mx-1 w-8 h-8 cursor-pointer text-pink-700 hover:text-secondary-light" />
+            <div className="flex gap-2">
+              <a
+                href="https://facebook.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Facebook"
+              >
+                <FacebookIcon className="w-8 h-8 text-blue-500 hover:text-secondary-light transition" />
+              </a>
+              <a
+                href="https://wa.me/yourwhatsapplink"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="WhatsApp"
+              >
+                <WhatsAppIcon className="w-8 h-8 text-green-500 hover:text-secondary-light transition" />
+              </a>
+              <a
+                href="https://instagram.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram"
+              >
+                <InstagramIcon className="w-8 h-8 text-pink-700 hover:text-secondary-light transition" />
+              </a>
             </div>
           </div>
         </div>
       </div>
-      <div className="border-t border-neutral-800 pt-4">
+      {/* Footer Bottom */}
+      <div className="border-t border-neutral-800 pt-4 mt-2">
         <div className="max-w-7xl mx-auto text-center text-sm text-neutral-400 text-shadow-lg/90">
           &copy; {new Date().getFullYear()} Ananda Adventure Treks. All rights
           reserved.

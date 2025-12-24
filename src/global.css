@@ -34,3 +34,21 @@ h1 {
 button {
   font-family: 'kalam', cursive;
 }
+
+/* ----------- ADD THIS SECTION AT THE END ---------- */
+@layer utilities {
+  .animate-revolve-y {
+    animation: revolveY 1.2s linear infinite;
+    transform-style: preserve-3d;
+  }
+}
+
+@keyframes revolveY {
+  0% {
+    transform: rotateY(0deg);
+  }
+  100% {
+    transform: rotateY(360deg);
+  }
+}
+/* -------------------------------------------------- */

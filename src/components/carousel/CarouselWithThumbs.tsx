@@ -202,7 +202,7 @@ export const CarouselWithThumbs: React.FC<Props> = ({ slides }) => {
               },
             }}
           >
-            <div className="absolute inset-0 bg-black/40" />
+            <div className="absolute inset-0 bg-black/50" />
             <div className="relative z-10 top-1/2 left-5 max-w-[40%] transform -translate-y-1/2 text-white">
               <AnimatePresence>
                 <motion.div

@@ -11,7 +11,7 @@ import {
   AboutSection,
   BlogSection,
 } from '@/components/home';
-import Footer from '@/components/Footer/Footer';
+import Footer from '@/components/footer/Footer';
 
 const Home = () => {
   return (
