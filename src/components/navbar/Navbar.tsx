@@ -1,120 +1,57 @@
-import React, { useEffect, useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import { logoImg } from '@/assets/images/images';
-import NavbarMobile from './NavbarMobile';
-import NavbarDesktop from './NavbarDesktop';
-
-const menuItems = [
-  { name: 'Home', to: '/' },
-  { name: 'About', to: '/about' },
-  {
-    name: 'Destinations',
-    to: '/destinations',
-    children: [
-      { name: 'Everest Base Camp', to: '/destinations/everest-base-camp' },
-      { name: 'Annapurna Circuit', to: '/destinations/annapurna-circuit' },
-    ],
-  },
-  {
-    name: 'Activities',
-    to: '/activities',
-    children: [
-      { name: 'Trekking', to: '/activities/trekking' },
-      { name: 'Rafting', to: '/activities/rafting' },
-    ],
-  },
-  {
-    name: 'Itineraries',
-    to: '/itineraries',
-    children: [
-      { name: '7 Days Nepal', to: '/itineraries/7-days-nepal' },
-      { name: 'Adventure Package', to: '/itineraries/adventure' },
-    ],
-  },
-  { name: 'Blog', to: '/blog' },
-  { name: 'Contact', to: '/contact' },
-];
-
-const TRANSPARENT_ROUTES = ['/'];
+import { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
+import DesktopNav from '@/components/navbar/DesktopNav';
+import MobileNav from '@/components/navbar/MobileNav';
+import type { LanguageCode } from '@components/navbar/Languages';
 
 const Navbar = () => {
-  const [scrolled, setScrolled] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
-  const location = useLocation();
-  const isTransparentRoute = TRANSPARENT_ROUTES.includes(location.pathname);
+  const { pathname } = useLocation();
+  const isHomePage = pathname === '/';
+
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileOpen, setIsMobileOpen] = useState(false);
+
+  const [language, setLanguage] = useState<LanguageCode>('en');
 
   useEffect(() => {
-    if (!isTransparentRoute) {
-      setScrolled(true);
-      return;
-    }
-    const onScroll = () => setScrolled(window.scrollY > 40);
-    onScroll();
-    window.addEventListener('scroll', onScroll);
-    return () => window.removeEventListener('scroll', onScroll);
-  }, [isTransparentRoute]);
+    const handleScroll = () => setIsScrolled(window.scrollY > 40);
+    handleScroll();
 
-  useEffect(() => setMenuOpen(false), [location.pathname]);
+    if (isHomePage) {
+      window.addEventListener('scroll', handleScroll, { passive: true });
+      return () => window.removeEventListener('scroll', handleScroll);
+    } else {
+      setIsScrolled(true);
+    }
+  }, [isHomePage]);
+
+  const isTransparent = isHomePage && !isScrolled;
 
   return (
-    <nav
-      className={`
-      fixed top-0 left-0 w-full z-50 transition-all duration-300
-      ${scrolled ? 'bg-white/90 backdrop-blur shadow' : 'bg-transparent'}
-    `}
+    <header
+      className={[
+        'top-0 left-0 z-50 w-full transition-all duration-300',
+        isHomePage ? 'fixed' : 'sticky',
+        isTransparent ? 'bg-transparent' : 'bg-white/90 backdrop-blur shadow',
+      ].join(' ')}
     >
-      {menuOpen && (
-        <div className="fixed top-0 left-0 w-full h-16 bg-white  shadow-md md:hidden z-40" />
-      )}
-      <div className="relative z-50 mx-auto max-w-7xl px-4 sm:px-6 flex items-center h-16">
-        <Link to="/" className="flex items-center gap-2">
-          <img src={logoImg} alt="Logo" className="h-10 w-auto" />
-          <span
-            className={`font-subheading text-lg text-primary-dark transition-opacity duration-300
-            ${scrolled || menuOpen ? 'opacity-100' : 'opacity-0'}
-          `}
-            style={{
-              width: scrolled || menuOpen ? 'auto' : 0,
-              overflow: 'hidden',
-              whiteSpace: 'nowrap',
-            }}
-          >
-            Ananda Adventures
-          </span>
-        </Link>
-        <div className="flex-1" />
-        <NavbarDesktop
-          menuItems={menuItems}
-          scrolled={scrolled}
-          logoImg={logoImg}
-        />
-        {/* Hamburger */}
-        <button
-          className="md:hidden p-2"
-          onClick={() => setMenuOpen(v => !v)}
-          aria-label="Toggle Menu"
-        >
-          <svg
-            className={`w-6 h-6 ${menuOpen ? 'text-gray-600' : scrolled ? 'text-gray-900' : 'text-white'}`}
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d={menuOpen ? 'M6 18L18 6M6 6l12 12' : 'M4 8h16M4 16h16'}
-            />
-          </svg>
-        </button>
-        <NavbarMobile
-          menuItems={menuItems}
-          menuOpen={menuOpen}
-          setMenuOpen={setMenuOpen}
-        />
-      </div>
-    </nav>
+      {/* Desktop */}
+      <DesktopNav
+        isTransparent={isTransparent}
+        language={language}
+        onLanguageChange={setLanguage}
+      />
+
+      {/* Mobile */}
+      <MobileNav
+        isTransparent={isTransparent}
+        isOpen={isMobileOpen}
+        onClose={() => setIsMobileOpen(false)}
+        onOpen={() => setIsMobileOpen(true)}
+        language={language}
+        onLanguageChange={setLanguage}
+      />
+    </header>
   );
 };
 

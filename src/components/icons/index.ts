@@ -24,3 +24,8 @@ export { default as LinkedInIcon } from '@mui/icons-material/LinkedIn';
 export { default as WhatsAppIcon } from '@mui/icons-material/WhatsApp';
 export { default as FacebookIcon } from '@mui/icons-material/Facebook';
 export { default as InstagramIcon } from '@mui/icons-material/Instagram';
+export { default as CloseIcon } from '@mui/icons-material/Close';
+export { default as MenuIcon } from '@mui/icons-material/Menu';
+export { default as LanguageIcon } from '@mui/icons-material/Language';
+export { default as AdminPanelSettingsIcon } from '@mui/icons-material/AdminPanelSettings';
+export { default as LocalPoliceIcon } from '@mui/icons-material/LocalPolice';

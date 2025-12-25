@@ -76,7 +76,7 @@ const AboutSection = () => {
               <div className="flex sm:justify-start justify-center">
                 <Button
                   variant="contained"
-                  className="bg-secondary-dark hover:bg-secondary text-white font-bold rounded-xl shadow-md shadow-black/20 px-5 sm:px-6 py-2 sm:py-2.5 w-[250px] sm:w-auto"
+                  className="bg-primary-dark hover:bg-secondary-dark text-white font-bold rounded-xl shadow-md shadow-black/20 px-5 sm:px-6 py-2 sm:py-2.5 w-[250px] sm:w-auto"
                   size="medium"
                 >
                   More about us
