@@ -115,7 +115,7 @@ const DestinationCard = ({ destination }: { destination: destinations }) => {
         )}
       </div>
       <div className="p-3 sm:p-4">
-        <h3 className="font-semibold text-base sm:text-lg mb-1">
+        <h3 className="font-semibold text-base sm:text-sm mb-1">
           {destination.title}
         </h3>
         <div className="flex items-center mb-1 sm:mb-2">

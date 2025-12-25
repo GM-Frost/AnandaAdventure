@@ -2,14 +2,25 @@ import { Avatar } from '@mui/material';
 import React from 'react';
 import { logoImg, paperPlaneImg } from '@/assets/images/images';
 import {
+  AdminPanelSettingsIcon,
   FacebookIcon,
   InstagramIcon,
+  LocalPoliceIcon,
   MarkEmailReadIcon,
   PhoneInTalkIcon,
   PinDropIcon,
   WhatsAppIcon,
 } from '@/components/icons';
-import { NepalGovt, Nma, Ntb, Taan } from '@/assets/logo/images';
+import {
+  AmericanExpress,
+  DiscoverCard,
+  MasterCard,
+  NepalGovt,
+  Nma,
+  Ntb,
+  Taan,
+  VisaCard,
+} from '@/assets/logo/images';
 
 const Footer = () => {
   return (
@@ -55,6 +66,19 @@ const Footer = () => {
               <PinDropIcon className="w-4 text-secondary" />
               <span className="text-sm text-neutral-400">
                 Chabahil 07, Kathmandu, Nepal
+              </span>
+            </div>
+            <hr className="border-neutral-700 my-2" />
+            <div className="flex items-center gap-2">
+              <AdminPanelSettingsIcon className="w-4 text-secondary" />
+              <span className="text-xs text-neutral-400">
+                Company Reg. No.: 43833-063-064 (2006)
+              </span>
+            </div>
+            <div className="flex items-center gap-2">
+              <LocalPoliceIcon className="w-4 text-secondary" />
+              <span className="text-xs text-neutral-400">
+                Tourism License No.: 809-063 (2006)
               </span>
             </div>
           </div>
@@ -193,6 +217,27 @@ const Footer = () => {
               >
                 <InstagramIcon className="w-8 h-8 text-pink-700 hover:text-secondary-light transition" />
               </a>
+            </div>
+          </div>
+          <div className="flex flex-col mt-5">
+            <h3 className="text-lg font-subheading mb-4 tracking-wide text-shadow-lg/90">
+              We Accept
+            </h3>
+            <div className="flex flex-wrap gap-2">
+              {[
+                { src: VisaCard, alt: 'Visa Card' },
+                { src: AmericanExpress, alt: 'American Express' },
+                { src: DiscoverCard, alt: 'Discover Card' },
+                { src: MasterCard, alt: 'Master Card' },
+              ].map(({ src, alt }) => (
+                <img
+                  key={alt}
+                  src={src}
+                  alt={alt}
+                  className="w-10 h-10 object-contain"
+                  loading="lazy"
+                />
+              ))}
             </div>
           </div>
         </div>

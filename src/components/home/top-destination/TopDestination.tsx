@@ -55,7 +55,7 @@ const TopDestination = () => {
           ref={scrollRef}
         >
           <span
-            className="hidden sm:block absolute top-0 h-full bg-primary rounded-full z-0 transition-all duration-300"
+            className="hidden sm:block absolute top-0 h-full bg-primary-dark rounded-full z-0 transition-all duration-300 text-center items-center"
             style={{
               left: pillStyle.left,
               width: pillStyle.width,
@@ -64,14 +64,16 @@ const TopDestination = () => {
           />
           {tabs.map((tab, index) => (
             <button
-              ref={el => (tabRefs.current[index] = el)}
+              ref={el => {
+                if (el) tabRefs.current[index] = el;
+              }}
               key={index}
               className={`
       flex-shrink-0 relative py-3 px-4 text-xs sm:text-sm font-semibold transition-colors z-10
       ${
         index === currentTab
-          ? 'text-white bg-primary sm:bg-transparent sm:text-white'
-          : 'text-gray-800 hover:text-primary-light hover:cursor-pointer bg-transparent'
+          ? 'text-white bg-primary-dark sm:bg-transparent sm:text-white'
+          : 'text-gray-800 hover:text-secondary-dark hover:cursor-pointer bg-transparent'
       }
       rounded-full
 
@@ -97,7 +99,7 @@ const TopDestination = () => {
         </div>
         {/* View Tours Button */}
         <button
-          className="group flex items-center gap-1 bg-primary text-white px-5 py-2 rounded-md text-xs sm:text-sm hover:bg-primary-dark hover:cursor-pointer transition-colors font-semibold overflow-hidden"
+          className="group flex items-center gap-1 bg-primary-dark text-white px-5 py-2 rounded-md text-xs sm:text-sm hover:bg-primary hover:cursor-pointer transition-colors font-semibold overflow-hidden"
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
           onClick={() => {
