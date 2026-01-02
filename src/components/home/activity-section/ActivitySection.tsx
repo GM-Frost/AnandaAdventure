@@ -30,9 +30,14 @@ const ActivitySection = () => {
     <div className="relative mx-auto w-full min-h-[500px] max-h-max pb-15">
       <div className="relative flex flex-col items-center z-10">
         <div className="flex flex-col items-center text-center w-full px-4 py-5">
-          <span className="text-6xl uppercase font-heading text-gray-400">
-            Activities
-          </span>
+          <div className="text-center mb-5">
+            <h2 className="text-3xl md:text-4xl font-heading font-bold text-gray-400">
+              Activities
+            </h2>
+            <p className="mt-3 text-md font-extras text-gray-500 max-w-xl mx-auto">
+              Choose experiences that match your spirit of adventure
+            </p>
+          </div>
           {/* Responsive Activities Grid */}
           <div
             className="

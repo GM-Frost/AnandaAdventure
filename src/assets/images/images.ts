@@ -41,7 +41,7 @@ import spainFlag from '@/assets/images/languages/spain.png';
 import franceFlag from '@/assets/images/languages/france.png';
 import nepalFlag from '@/assets/images/languages/nepali.png';
 import britainFlag from '@/assets/images/languages/uk.png';
-
+import exploreDivider from '@/assets/images/explore_divider.png';
 export {
   beachImg,
   bhutanImg,
@@ -86,4 +86,5 @@ export {
   franceFlag,
   nepalFlag,
   britainFlag,
+  exploreDivider,
 };
