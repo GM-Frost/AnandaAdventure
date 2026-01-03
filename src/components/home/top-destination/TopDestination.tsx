@@ -24,90 +24,84 @@ const TopDestination = () => {
   }, [currentTab, tabs.length]);
 
   return (
-    <div className="relative mx-auto w-full min-h-[700px] max-h-max pb-15">
-      {/* Background */}
+    <div className="relative mx-auto w-full py-16">
+      {/* Background - Fixed positioning prevents shifting */}
       <div
-        className="absolute inset-0 bg-cover bg-center"
+        className="absolute inset-0 bg-cover bg-center bg-fixed"
         style={{ backgroundImage: `url(${doodleImg2})` }}
       >
         <div className="absolute inset-0 bg-orange-50/90" />
       </div>
-      {/* Tab bar Title*/}
+
+      {/* Content Container with fixed min-height */}
       <div className="relative flex flex-col items-center z-10">
-        <div className="top-destination-txt flex flex-col items-center text-center w-full px-4 py-5">
-          <h2 className="text-primary font-subheading text-xl sm:text-xl md:text-2xl lg:text-3xl py-2 sm:py-3 md:py-4 text-shadow-md/10">
+        {/* Title Section */}
+        <div className="top-destination-txt flex flex-col items-center text-center w-full px-4 py-1 mb-6">
+          <h2 className="text-primary font-subheading text-xl sm:text-xl md:text-2xl lg:text-3xl py-2 sm:py-1 md:py-2 text-shadow-md/10">
             Top Destinations
           </h2>
           <span className="font-heading font-bold text-lg sm:text-xl md:text-2xl lg:text-3xl leading-tight text-shadow-md/10">
             Our Handpicked <span className="text-secondary">Tour</span> Packages
           </span>
         </div>
+
         {/* Tabs */}
         <div
-          className=" w-full max-w-7xl flex items-center
-    overflow-x-auto
-    scrollbar-hide
-    rounded-full bg-white/90 shadow-lg
-    mt-10 px-2 gap-2
-    sm:w-[95%] sm:mx-auto
-    sm:justify-between
-    relative"
+          className="relative w-full max-w-8xl mt-1 mb-2
+            flex items-center gap-1
+            overflow-x-auto scrollbar-hide
+            px-1 py-1
+            sm:justify-center
+            snap-x snap-mandatory"
           ref={scrollRef}
         >
+          {tabs.map((tab, index) => {
+            const isActive = index === currentTab;
+            return (
+              <button
+                key={tab.id}
+                ref={el => (tabRefs.current[index] = el)}
+                onClick={() => setCurrentTab(index)}
+                className={`snap-start flex-shrink-0
+                  px-5 py-2.5 text-xs sm:text-sm font-semibold
+                  whitespace-nowrap rounded-full
+                  transition-all duration-200
+                  z-10
+                  cursor-pointer
+                  ${
+                    isActive
+                      ? 'bg-primary-dark text-white shadow-md scale-95'
+                      : 'bg-white text-gray-700 hover:bg-gray-50 hover:text-primary-dark shadow-sm'
+                  }
+                `}
+              >
+                {tab.label}
+              </button>
+            );
+          })}
           <span
-            className="hidden sm:block absolute top-0 h-full bg-primary-dark rounded-full z-0 transition-all duration-300 text-center items-center"
+            className="hidden lg:block absolute top-2 bottom-2 rounded-full transition-all duration-300 z-0"
             style={{
               left: pillStyle.left,
               width: pillStyle.width,
-              pointerEvents: 'none',
-            }}
-          />
-          {tabs.map((tab, index) => (
-            <button
-              ref={el => {
-                if (el) tabRefs.current[index] = el;
-              }}
-              key={index}
-              className={`
-      flex-shrink-0 relative py-3 px-4 text-xs sm:text-sm font-semibold transition-colors z-10
-      ${
-        index === currentTab
-          ? 'text-white bg-primary-dark sm:bg-transparent sm:text-white'
-          : 'text-gray-800 hover:text-secondary-dark hover:cursor-pointer bg-transparent'
-      }
-      rounded-full
-
-    `}
-              onClick={() => setCurrentTab(index)}
-            >
-              {tab.label}
-            </button>
-          ))}
-        </div>
-        {/* Pill indicator (desktop only) */}
-        <div className="relative w-full sm:w-[80%] mt-[-20px] pointer-events-none hidden sm:block">
-          <div
-            style={{
-              width: `calc(100% / ${tabs.length})`,
-              transform: `translateX(${currentTab * 100}%)`,
             }}
           />
         </div>
-        {/* Tab Content */}
-        <div className="w-[90vw] sm:w-[80%] max-w-7xl px-4 sm:px-8 py-6 rounded-xl overflow-y-auto">
+        {/* Tab Content with fixed minimum height to prevent layout shift */}
+        <div className="w-full cursor-pointer" style={{ minHeight: '380px' }}>
           <TopDestinationSlider category={tabs[currentTab].label} />
         </div>
         {/* View Tours Button */}
         <button
-          className="group flex items-center gap-1 bg-primary-dark text-white px-5 py-2 rounded-md text-xs sm:text-sm hover:bg-primary hover:cursor-pointer transition-colors font-semibold overflow-hidden"
+          className="group flex items-center gap-2 bg-primary-dark text-white px-2 py-2 rounded-lg text-xs sm:text-sm hover:bg-primary transition-all duration-300 font-semibold shadow-md hover:shadow-lg mt-4"
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
           onClick={() => {
             /* Add your navigation logic here */
           }}
         >
-          <span className="group-hover:translate-x-1 transition-transform duration-300 uppercase">
-            View All Tour
+          <span className="group-hover:translate-x-1 transition-transform duration-300 uppercase cursor-pointer">
+            View All Tours
           </span>
           <span
             className={`transform transition-all duration-300 ${

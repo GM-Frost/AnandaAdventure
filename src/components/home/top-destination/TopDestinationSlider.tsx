@@ -13,6 +13,7 @@ const TopDestinationSlider = ({ category }: { category: string }) => {
   // for destination carousel
   const [destinationIndex, setDestinationIndex] = useState(0);
   const [destinationItems, setDestinationItems] = useState(1);
+  const [isTransitioning, setIsTransitioning] = useState(false);
 
   const updateDestinationItems = () => {
     if (window.innerWidth >= 1024) {
@@ -68,8 +69,8 @@ const TopDestinationSlider = ({ category }: { category: string }) => {
 
   return (
     <section className="relative w-full max-w-6xl mx-auto px-2 sm:px-4 lg:px-8 py-4 sm:py-8">
-      <div className="relative overflow-hidden">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-5 sm:gap-6 transition-transform duration-300">
+      <div className="relative" style={{ minHeight: '380px' }}>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-5 lg:gap-6">
           {visibleDestinations.map(destination => (
             <DestinationCard key={destination.id} destination={destination} />
           ))}
@@ -78,17 +79,19 @@ const TopDestinationSlider = ({ category }: { category: string }) => {
           <>
             <button
               onClick={prevDestination}
-              className="absolute left-0 top-1/2 -translate-y-1/2 bg-white rounded-full shadow-md p-1 sm:p-2 z-10 hover:bg-gray-100"
+              disabled={isTransitioning}
+              className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-2 sm:-translate-x-4 bg-white rounded-full shadow-lg p-2 sm:p-2.5 z-10 hover:bg-gray-50 transition-colors disabled:opacity-50"
               aria-label="Previous Destination"
             >
-              <ChevronLeftIcon className="text-gray-700 text-lg sm:text-xl" />
+              <ChevronLeftIcon className="text-gray-700 w-5 h-5 sm:w-6 sm:h-6" />
             </button>
             <button
               onClick={nextDestination}
-              className="absolute -right-0 top-1/2 -translate-y-1/2 bg-white rounded-full shadow-md p-1 sm:p-2 z-30 hover:bg-gray-100"
+              disabled={isTransitioning}
+              className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-2 sm:translate-x-4 bg-white rounded-full shadow-lg p-2 sm:p-2.5 z-10 hover:bg-gray-50 transition-colors disabled:opacity-50"
               aria-label="Next Destination"
             >
-              <ChevronRightIcon className="text-gray-700 text-lg sm:text-xl" />
+              <ChevronRightIcon className="text-gray-700 w-5 h-5 sm:w-6 sm:h-6" />
             </button>
           </>
         )}
@@ -98,48 +101,58 @@ const TopDestinationSlider = ({ category }: { category: string }) => {
 };
 
 const DestinationCard = ({ destination }: { destination: destinations }) => {
-  const [mainIdx, setMainIdx] = useState(0);
-
   return (
-    <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-all starting:opacity-0 starting:translate-y-60 duration-1000">
-      <div className="relative pb-[100%] overflow-hidden">
+    <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 h-full flex flex-col">
+      {/* Fixed aspect ratio image container */}
+      <div className="relative w-full aspect-[4/3] overflow-hidden bg-gray-100">
         <img
           src={destination.images[0]}
           alt={destination.title}
-          className="absolute top-0 left-0 w-full h-full object-cover hover:scale-105 sm:hover:scale-110 transition-transform duration-300"
+          className="absolute inset-0 w-full h-full object-cover hover:scale-110 transition-transform duration-500"
+          loading="lazy"
         />
         {destination.isNew && (
-          <span className="absolute top-2 right-2 bg-primary text-white text-xs font-bold px-2 py-1 rounded-full">
+          <span className="absolute top-3 right-3 bg-primary-light text-white text-xs font-bold px-2.5 py-1 rounded-full shadow-md">
             NEW
           </span>
         )}
       </div>
-      <div className="p-3 sm:p-4">
-        <h3 className="font-semibold text-base sm:text-sm mb-1">
-          {destination.title}
-        </h3>
-        <div className="flex items-center mb-1 sm:mb-2">
-          {[...Array(5)].map((_, i) => (
-            <StarIcon
-              key={i}
-              className={`w-3 h-3 ${
-                i < destination.reviews ? 'text-yellow-400' : 'text-gray-300'
-              }`}
-              fill="currentColor"
-            />
-          ))}
-          <span className="text-gray-600 text-xs ml-1">
-            ({destination.reviewScore})
-          </span>
-        </div>
-        <div className="flex justify-between items-center">
-          <div>
-            {destination.priceFrom && (
-              <span className="text-gray-400  mr-1 sm:mr-2 text-xs sm:text-sm">
-                From ${destination.priceFrom.toFixed(0)}+
-              </span>
-            )}
+
+      {/* Fixed height content area */}
+      <div className="p-4 flex-1 flex flex-col justify-between">
+        <div>
+          <h3 className="font-semibold text-sm sm:text-base mb-2 line-clamp-2 min-h-[2.5rem]">
+            {destination.title}
+          </h3>
+          <div className="flex items-center mb-3">
+            <div className="flex">
+              {[...Array(5)].map((_, i) => (
+                <StarIcon
+                  key={i}
+                  className={`w-3.5 h-3.5 ${
+                    i < destination.reviews
+                      ? 'text-yellow-400'
+                      : 'text-gray-300'
+                  }`}
+                  fill="currentColor"
+                />
+              ))}
+            </div>
+            <span className="text-gray-600 text-xs ml-1.5 font-medium">
+              ({destination.reviewScore})
+            </span>
           </div>
+        </div>
+
+        <div className="flex items-center justify-between pt-2 border-t border-gray-100">
+          {destination.priceFrom && (
+            <div className="flex flex-col">
+              <span className="text-gray-500 text-xs">From</span>
+              <span className="text-secondary-light font-bold text-base sm:text-lg">
+                ${destination.priceFrom}
+              </span>
+            </div>
+          )}
         </div>
       </div>
     </div>
